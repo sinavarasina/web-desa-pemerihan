@@ -13,7 +13,10 @@ const fromRequest = z.object({
 export async function PUT(req: Request) {
   const result = await validateBody(req, fromRequest);
   if (!result.success) {
-    return Response.json({ error: result.error }, { status: 400 });
+    return Response.json(
+      { error: result.error },
+      { status: result.error.status },
+    );
   }
 
   // query to db to get the user row

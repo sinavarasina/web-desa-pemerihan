@@ -16,7 +16,10 @@ export async function POST(req: Request) {
 
   const result = await validateBody(req, User);
   if (!result.success) {
-    return Response.json({ error: result.error }, { status: 400 });
+    return Response.json(
+      { error: result.error },
+      { status: result.error.status },
+    );
   }
 
   try {

@@ -1,8 +1,15 @@
 import * as z from "zod";
 
+type ValidationError = {
+  message: string;
+  code: string;
+  status: number;
+  details?: unknown;
+};
+
 type ValidationResult<T> =
   | { success: true; data: T }
-  | { success: false; error: any };
+  | { success: false; error: ValidationError };
 
 export async function validateBody<T>(
   req: Request,
@@ -18,6 +25,7 @@ export async function validateBody<T>(
       error: {
         message: "Body Json hilang atau tidak valid",
         code: "INVALID_JSON",
+        status: 400,
       },
     };
   }
@@ -32,7 +40,11 @@ export async function validateBody<T>(
   } else {
     return {
       success: false,
-      error: z.treeifyError(result.error),
+      error: {
+        message: "Validasi gagal",
+        code: "VALIDATION_ERROR",
+        status: 422,
+      },
     };
   }
 }
