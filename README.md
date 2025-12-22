@@ -10,7 +10,6 @@
 
 ### Setup
 
-> Setup nomor 1 harus dijalankan sekali saja saat belum ada development environment atau saat setelah mereset container dan volume dan juga sebaiknya dieksekusi secara berurutan.
 > Pastikan .env sudah berada di root project.
 
 - Buat db local menggunakan compose
