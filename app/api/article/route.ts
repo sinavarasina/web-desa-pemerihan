@@ -4,7 +4,7 @@ import * as z from "zod";
 import { JwtPayload } from "jsonwebtoken";
 import { validateBody } from "@/libs/requestHelper";
 import { validateJwtAuthHelper } from "@/libs/authHelper";
-import { minioClient, BUCKET_NAME } from '@/libs/minio';
+import { minioClient, BUCKET_NAME } from "@/libs/minio";
 
 const Article = z.object({
   title: z.string().min(5),
@@ -26,10 +26,10 @@ const generateSlug = (text: string) => {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')     // Ganti spasi dengan -
-    .replace(/[^\w\-]+/g, '') // Hapus karakter non-word
-    .replace(/\-\-+/g, '-');  // Ganti multiple - dengan single -
-}
+    .replace(/\s+/g, "-") // Ganti spasi dengan -
+    .replace(/[^\w\-]+/g, "") // Hapus karakter non-word
+    .replace(/\-\-+/g, "-"); // Ganti multiple - dengan single -
+};
 
 export async function POST(req: Request) {
   // validate body
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
   try {
     await minioClient.statObject(BUCKET_NAME, result.data.featuredImageUrl);
   } catch (err) {
-    return { success: false, error: 'File tidak ditemukan di storage server.' };
+    return { success: false, error: "File tidak ditemukan di storage server." };
   }
 
   // generate slug from title

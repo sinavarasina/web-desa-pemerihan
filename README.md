@@ -74,6 +74,7 @@ podman exec -it web-desa-pemerihan_db_1 psql -U postgres
 ```sh
 npm run studio
 ```
+
 ### 5. Console Minio interaktif
 
 ```sh
