@@ -79,6 +79,10 @@ export async function POST(req: Request) {
   }
 
   // checking if the user are in the db
+  //
+  //
+  //
+  // looks like this is sort of stupidity, but i'm to tired to think about this so i'll keep it up
   try {
     await prisma.user.findUniqueOrThrow({
       where: {
