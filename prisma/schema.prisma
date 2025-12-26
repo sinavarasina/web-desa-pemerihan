@@ -17,8 +17,8 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  name      String?  @unique
-  password  String?
+  name      String   @unique
+  password  String
 }
 
 model Article {
@@ -38,7 +38,7 @@ model ShopItems {
   price     Int
   slug      String   @unique
   contact   String
-  content   String   @db.Text
+  description       String   @db.Text
   featuredImageUrl  String   @map("featured_image_url")
   additionalImages  String[] @map("additional_images")
 }
