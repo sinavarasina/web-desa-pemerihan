@@ -1,5 +1,5 @@
 "use server";
-import { s3Client, minioConf } from "@/libs/minio";
+import { s3Client, minioConf } from "@/libs/awsS3";
 import { PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
