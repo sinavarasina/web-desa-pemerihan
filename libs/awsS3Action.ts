@@ -1,4 +1,5 @@
 "use server";
+import { randomUUID } from "crypto";
 import { s3Client, minioConf } from "@/libs/awsS3";
 import { PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
@@ -13,8 +14,10 @@ export async function getPresignedUploadUrl(
     // if (!bucketExists) {
     //   await minioClient.makeBucket(minioConf.BUCKET_NAME, "us-east-1");
     // }
-
-    const objectName = `${Date.now()}-${originalName.replace(/\s/g, "-")}`;
+    
+    // making object name from random uuid
+    const extension = originalName.split('.').pop();
+    const objectName = `${randomUUID()}.${extension}`;
 
     const command = new PutObjectCommand({
       Bucket: minioConf.BUCKET_NAME,
