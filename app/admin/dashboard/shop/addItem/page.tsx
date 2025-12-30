@@ -33,8 +33,9 @@ export default function Page() {
           <p>Harga:</p>
           <input
             className="border px-2 py-1 border-gray-300 w-1/2"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(Number(e.target.value))}
           />
         </div>
 
