@@ -5,49 +5,37 @@ import { PiArticleMedium } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { CiTrash } from "react-icons/ci";
 import { MdOutlineModeEdit } from "react-icons/md";
-
+import { timeFormatter } from "@/libs/timeFormatterToID";
 
 export default function ArticleDashboard() {
   const [articles, setArticles] = useState<any>([]);
 
-  const getArticleData = async () => {
-    try {
-      const res = await fetch(
-        "http://localhost:3000/api/article?page=1&limit=10",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-
-      if (!res.ok) {
-        throw new Error("Request failed");
-      }
-
-      const data = await res.json();
-      console.log(data);
-      setArticles(data.data);
-
-      localStorage.setItem("auth", data.token);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const timeFormat = (iso: string) => {
-    const date = new Date(iso);
-    const formatted = date.toLocaleString("id-ID", {
-      timeZone: "Asia/Jakarta",
-      dateStyle: "full",
-      timeStyle: "medium",
-    });
-
-    return formatted
-  }
-
   useEffect(() => {
+    const getArticleData = async () => {
+      try {
+        const res = await fetch(
+          "http://localhost:3000/api/article?page=1&limit=10",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
+
+        if (!res.ok) {
+          throw new Error("Request failed");
+        }
+
+        const data = await res.json();
+        console.log(data);
+        setArticles(data.data);
+
+        localStorage.setItem("auth", data.token);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     getArticleData();
   }, []);
 
@@ -78,7 +66,7 @@ export default function ArticleDashboard() {
                   Dibuat pada:
                 </p>
                 <p className="text-gray-700 truncate max-w-md text-sm">
-                  {timeFormat(article.createdAt)}
+                  {timeFormatter(article.createdAt)}
                 </p>
               </div>
 

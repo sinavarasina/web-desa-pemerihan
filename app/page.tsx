@@ -178,7 +178,9 @@ export default function Home() {
               <div className="flex items-end h-1/2 portrait:text-[clamp(15px,2vh,20px)]">
                 <b>Desa Sejahtera</b>
               </div>
-              <div className="h-1/2 text-[clamp(10px,1vw,13px)] portrait:text-[clamp(15px,2vh,20px)]">Kabupaten Makmur</div>
+              <div className="h-1/2 text-[clamp(10px,1vw,13px)] portrait:text-[clamp(15px,2vh,20px)]">
+                Kabupaten Makmur
+              </div>
             </div>
           </div>
         </div>
@@ -190,15 +192,15 @@ export default function Home() {
         <div className="flex flex-row justify-center items-center w-[44%]">
           <div className="flex flex-row justify-center items-center gap-[2%] h-[100%] w-[100%]">
             {["Beranda", "Tentang", "Pejabat", "UMKM", "Artikel", "Lokasi"].map(
-            (item) => (
-              <div
-                key={item}
-                className="flex justify-center items-center w-auto h-[100%] portrait:text-[clamp(15px,1.3vh,18px)]"
-              >
-                {item}
-              </div>
-            ),
-          )}
+              (item) => (
+                <div
+                  key={item}
+                  className="flex justify-center items-center w-auto h-[100%] portrait:text-[clamp(15px,1.3vh,18px)]"
+                >
+                  {item}
+                </div>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -578,7 +580,9 @@ export default function Home() {
               </div>
               <div className="flex flex-row justify-center items-center h-[90%] w-[40%] border-white border-2 gap-3 rounded-xl bg-white/30">
                 <BsFillTelephoneFill className="text-white" />
-                <div className="text-white font-semibold text-[clamp(10px,1.2vw,18px)] portrait:text-[clamp(10px,1.2vh,18px)]">Hubungi Kami</div>
+                <div className="text-white font-semibold text-[clamp(10px,1.2vw,18px)] portrait:text-[clamp(10px,1.2vh,18px)]">
+                  Hubungi Kami
+                </div>
               </div>
             </div>
           </div>

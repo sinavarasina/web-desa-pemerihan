@@ -73,7 +73,6 @@ export default function Page() {
     }
   };
 
-
   return (
     <>
       <div className="m-10">
@@ -109,7 +108,6 @@ export default function Page() {
             onChange={(e) => setContact(e.target.value)}
           />
         </div>
-
 
         {/* Input gambar */}
         <div className="flex items-center gap-5 mb-5">
@@ -156,7 +154,6 @@ export default function Page() {
           />
         </div>
 
-
         {/* Tombol kirim */}
         <div className="my-5 flex justify-end">
           <div
@@ -169,7 +166,6 @@ export default function Page() {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );
