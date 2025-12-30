@@ -118,29 +118,7 @@ export default function Page() {
             onChange={(e) => {
               setFile(e.target.files?.[0] || null);
             }}
-            className="flex-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-          />
-        </div>
-        <div className="flex items-center gap-5 mb-5">
-          <p>(Opsional) Gambar Tambahan 1</p>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              setFile(e.target.files?.[0] || null);
-            }}
-            className="flex-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-          />
-        </div>
-        <div className="flex items-center gap-5 mb-5">
-          <p>(Opsional) Gambar Tambahan 2</p>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              setFile(e.target.files?.[0] || null);
-            }}
-            className="flex-1 w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
           />
         </div>
 
