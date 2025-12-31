@@ -3,14 +3,16 @@ import Link from "next/link";
 import DashboardSidebar from "@/ui/dashboardSidebar";
 import { MdAddBusiness } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { CiTrash } from "react-icons/ci";
+import { timeFormatter } from "@/libs/timeFormatterToID";
 
 export default function Page() {
-  const [articles, setArticles] = useState<any>([]);
+  const [shopItem, setShopItem] = useState<any>([]);
 
-  const getArticleData = async () => {
+  const getShopData = async () => {
     try {
       const res = await fetch(
-        "http://localhost:3000/api/article?page=1&limit=10",
+        "http://localhost:3000/api/shopitem?page=1&limit=10",
         {
           method: "GET",
           headers: {
@@ -25,7 +27,7 @@ export default function Page() {
 
       const data = await res.json();
       console.log(data);
-      setArticles(data.data);
+      setShopItem(data.data);
 
       localStorage.setItem("auth", data.token);
     } catch (err) {
@@ -34,7 +36,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    getArticleData();
+    getShopData();
   }, []);
 
   return (
@@ -42,32 +44,35 @@ export default function Page() {
       <DashboardSidebar />
 
       <main className="flex-1 p-5 md:p-8 overflow-x-hidden">
-        <div className="font-bold text-xl mb-6">Toko</div>
+        <div className="font-bold text-4xl text-[#333446] mb-6">Toko</div>
 
         <div className="mb-6 flex">
           <Link prefetch={false} href="/admin/dashboard/shop/addItem">
-            <span className="flex items-center gap-2 rounded-2xl py-2 px-4 bg-blue-50 text-blue-700 font-bold cursor-pointer hover:bg-blue-100 text-sm transition-colors">
+            <span className="flex items-center gap-2 rounded-2xl py-2 px-4 bg-[#F0F0F0] text-[#333446] font-bold cursor-pointer hover:bg-[#ACADAD] text-sm transition-colors">
               <MdAddBusiness className="text-xl" />
               Tambah Barang di Toko
             </span>
           </Link>
         </div>
 
-        {articles.map((article: any) => (
-          <div key={article.id} className="flex flex-col gap-4 mb-5">
-            <div className="border rounded-lg p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
+        {shopItem.map((item: any) => (
+          <div key={item.id} className="flex flex-col gap-4 mb-5">
+            <div className="border border-[#ACACAF] rounded-2xl px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <p className="text-gray-700 truncate max-w-md font-bold">
-                  {article.title}
+                <p className="text-gray-700 truncate max-w-md text-xl font-bold">
+                  {item.name}
+                </p>
+                <p className="text-gray-700 truncate max-w-md text-sm">
+                  Dibuat pada:
+                </p>
+                <p className="text-gray-700 truncate max-w-md text-sm">
+                  {timeFormatter(item.createdAt)}
                 </p>
               </div>
 
-              <div className="flex gap-3 text-sm font-medium">
-                <button className="px-3 py-1 text-blue-600 hover:bg-blue-50 rounded">
-                  Edit
-                </button>
-                <button className="px-3 py-1 text-red-600 hover:bg-red-50 rounded">
-                  Hapus
+              <div className="flex gap-1 text-sm font-medium">
+                <button className="px-3 py-1 text-xl text-[#e64553] hover:bg-red-50 rounded">
+                  <CiTrash />
                 </button>
               </div>
             </div>

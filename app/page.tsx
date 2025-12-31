@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CiMail } from "react-icons/ci";
 import { BsFillTelephoneFill, BsMailbox } from "react-icons/bs";
 import { PiSealCheckFill } from "react-icons/pi";
@@ -16,6 +17,8 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
+
+import { MdOpenInNew } from "react-icons/md";
 
 type Pejabat = {
   nama: string;
@@ -166,6 +169,19 @@ const newsData: News[] = [
 export default function Home() {
   return (
     <div>
+      {/*////// development bar to navigating to admin dashboard, just for development, we'll remove it on production */}
+      <div className="bg-[#333446] flex justify-end py-5 px-10 text-[#EAEFEF]">
+        <div className="flex">
+          <Link prefetch={false} href="/admin/dashboard">
+            <span className="flex items-center gap-2 rounded-2xl py-2 px-4 bg-[#F0F0F0] text-[#333446] font-bold cursor-pointer hover:bg-[#ACADAD] text-sm transition-colors">
+              <MdOpenInNew className="text-xl" />
+              <p>Masuk ke Dashboard</p>
+            </span>
+          </Link>
+        </div>
+      </div>
+      {/*////// development bar to navigating to admin dashboard, just for development, we'll remove it on production */}
+
       <div className="flex flex-row bg-[#FFFDE1] h-[10vh] w-[100vw] text-[clamp(12px,1.2vw,15px)]">
         {/* Logo */}
         <div className="flex items-center w-[50%] landscape:w-[32%] h-[100%] portrait:md:w-[42%]">
@@ -179,7 +195,9 @@ export default function Home() {
               <div className="flex items-end h-1/2 portrait:text-[clamp(10px,1.1vh,15px)] portrait:md:text-[clamp(15px,2vh,20px)]">
                 <b>Desa Sejahtera</b>
               </div>
-              <div className="h-1/2 portrait:text-[clamp(10px,1.1vh,15px)] portrait:md:text-[clamp(15px,2vh,20px)]">Kabupaten Makmur</div>
+              <div className="h-1/2 portrait:text-[clamp(10px,1.1vh,15px)] portrait:md:text-[clamp(15px,2vh,20px)]">
+                Kabupaten Makmur
+              </div>
             </div>
           </div>
         </div>
@@ -191,15 +209,15 @@ export default function Home() {
         <div className="hidden md:flex flex-row justify-center items-center w-[44%]">
           <div className="flex flex-row justify-center items-center gap-[2%] h-[100%] w-[100%]">
             {["Beranda", "Tentang", "Pejabat", "UMKM", "Artikel", "Lokasi"].map(
-            (item) => (
-              <div
-                key={item}
-                className="flex justify-center items-center w-auto h-[100%] portrait:text-[clamp(15px,1.3vh,18px)]"
-              >
-                {item}
-              </div>
-            ),
-          )}
+              (item) => (
+                <div
+                  key={item}
+                  className="flex justify-center items-center w-auto h-[100%] portrait:text-[clamp(15px,1.3vh,18px)]"
+                >
+                  {item}
+                </div>
+              ),
+            )}
           </div>
         </div>
         <div className="flex md:hidden justify-center items-center h-[100%] w-[15%]">
@@ -579,7 +597,9 @@ export default function Home() {
               </div>
               <div className="flex flex-row justify-center items-center h-[90%] w-[40%] border-white border-2 gap-3 rounded-xl bg-white/30">
                 <BsFillTelephoneFill className="text-white" />
-                <div className="text-white font-semibold text-[clamp(10px,1.2vw,18px)] portrait:text-[clamp(10px,1.2vh,18px)]">Hubungi Kami</div>
+                <div className="text-white font-semibold text-[clamp(10px,1.2vw,18px)] portrait:text-[clamp(10px,1.2vh,18px)]">
+                  Hubungi Kami
+                </div>
               </div>
             </div>
           </div>
