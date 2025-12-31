@@ -15,6 +15,7 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import { IoMenu } from "react-icons/io5";
 
 type Pejabat = {
   nama: string;
@@ -167,27 +168,27 @@ export default function Home() {
     <div>
       <div className="flex flex-row bg-[#FFFDE1] h-[10vh] w-[100vw] text-[clamp(12px,1.2vw,15px)]">
         {/* Logo */}
-        <div className="flex items-center w-[32%] h-[100%] portrait:w-[42%]">
-          <div className="flex ml-[20%] portrait:ml-[10%] w-[80%] h-[100%] gap-[3%]">
+        <div className="flex items-center w-[50%] landscape:w-[32%] h-[100%] portrait:md:w-[42%]">
+          <div className="flex ml-[20%] portrait:ml-[10%] w-[100%] md:w-[80%] h-[100%] gap-[3%]">
             <div className="flex justify-center items-center w-auto h-[100%]">
-              <div className="flex justify-center items-center h-[70%] aspect-square bg-yellow-500 rounded-full">
+              <div className="flex justify-center items-center h-[50%] md:h-[70%] aspect-square bg-yellow-500 rounded-full">
                 <FaMountainSun className="h-[50%] w-auto" />
               </div>
             </div>
             <div className="flex flex-col w-[70%] h-full">
-              <div className="flex items-end h-1/2 portrait:text-[clamp(15px,2vh,20px)]">
+              <div className="flex items-end h-1/2 portrait:text-[clamp(10px,1.1vh,15px)] portrait:md:text-[clamp(15px,2vh,20px)]">
                 <b>Desa Sejahtera</b>
               </div>
-              <div className="h-1/2 text-[clamp(10px,1vw,13px)] portrait:text-[clamp(15px,2vh,20px)]">Kabupaten Makmur</div>
+              <div className="h-1/2 portrait:text-[clamp(10px,1.1vh,15px)] portrait:md:text-[clamp(15px,2vh,20px)]">Kabupaten Makmur</div>
             </div>
           </div>
         </div>
 
         {/* Spacer */}
-        <div className="flex w-[24%] portrait:w-[14%]"></div>
+        <div className="flex w-[35%] landscape:w-[24%] portrait:md:w-[14%]"></div>
 
         {/* Menu */}
-        <div className="flex flex-row justify-center items-center w-[44%]">
+        <div className="hidden md:flex flex-row justify-center items-center w-[44%]">
           <div className="flex flex-row justify-center items-center gap-[2%] h-[100%] w-[100%]">
             {["Beranda", "Tentang", "Pejabat", "UMKM", "Artikel", "Lokasi"].map(
             (item) => (
@@ -201,23 +202,26 @@ export default function Home() {
           )}
           </div>
         </div>
+        <div className="flex md:hidden justify-center items-center h-[100%] w-[15%]">
+          <IoMenu className="h-[30%] w-auto"/>
+        </div>
       </div>
       <div className="flex flex-row justify-center items-center landscape:h-[90vh] portrait:w-[100vw] portrait:aspect-[2/1.25]">
         Image
       </div>
-      <div className="flex flex-col border-black border-[1px] gap-[2%] bg-[#F5F2F2] landscape:h-[100vh] portrait:w-[100vw] portrait:aspect-[2/1.15] text-[clamp(12px,1.2vw,15px)]">
+      <div className="flex flex-col gap-[2%] bg-[#F5F2F2] landscape:h-[100vh] portrait:w-[100vw] portrait:aspect-[2/2.5] portrait:sm:aspect-[2/1.15] text-[clamp(12px,1.2vw,15px)]">
         <div className="flex flex-col border-red-500 h-[20%] w-[100%] portrait:h-[15%]">
-          <div className="flex border-black h-[45%] w-[100%]"></div>
-          <div className="flex justify-center items-center border-black h-auto w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
+          <div className="flex h-[45%] w-[100%]"></div>
+          <div className="flex justify-center items-center h-auto w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
             <b>Selayang Pandang</b>
           </div>
           <div className="flex justify-center border-black h-[15%] w-[100%] mt-[0.5%]">
             <div className="flex bg-[#E9B63B] h-[15%] w-[7%] rounded-[5px]"></div>
           </div>
         </div>
-        <div className="flex flex-row justify-center items-start border-red-500 border-[1px] h-[80%] w-[100%]">
+        <div className="flex flex-row justify-center items-start border-red-500 border-[1px] h-[100%] sm:h-[80%] w-[100%]">
           <div className="flex flex-col sm:flex-row justify-center items-center border-blue-500 h-[90%] w-[90%]">
-            <div className="flex flex-col justify-center items-center border-black-500 border-[1px] h-[100%] w-[50%]">
+            <div className="flex flex-col justify-center items-center border-black-500 border-[1px] h-[50%] sm:h-[100%] w-[100%] sm:w-[50%]">
               <div className="flex flex-col border-red-500 border-[1px] h-[100%] w-[100%]">
                 <div className="flex h-[20%] w-[100%] text-[#452829] text-[clamp(12px,1.2vw,20px)]">
                   <b>Visi Desa</b>
@@ -232,35 +236,31 @@ export default function Home() {
               </div>
               <div className="flex flex-row border-red-500 border-[1px] h-[100%] w-[100%]"></div>
             </div>
-            <div className="relative flex-row border-red-500 border-[1px] h-[100%] w-[50%]">
-              <div className="absolute top-0 right-0 w-[95%] h-[95%] border-blue-500 border-[5px]">
-                Kotak 1
-              </div>
-              <div className="absolute bottom-[0%] left-[0%] w-[30%] h-[15%] border-green-500 border-[5px]">
-                Kotak 2
-              </div>
+            <div className="relative flex-row border-red-500 border-[1px] h-[50%] sm:h-[100%] w-[100%] sm:w-[50%]">
+              <div className="absolute top-0 right-0 w-[95%] h-[95%] border-blue-500 border-[5px]"></div>
+              <div className="absolute bottom-[0%] left-[0%] w-[30%] h-[15%] border-green-500 border-[5px]"></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col landscape:h-[80vh] portrait:w-[100%] portrait:aspect-[2/1]">
+      <div className="flex flex-col landscape:h-[80vh] portrait:w-[100%] portrait:aspect-[2/2.5] portrait:sm:aspect-[2/1]">
         <div className="flex flex-col items-center h-[30%] w-[100%]">
-          <div className="flex justify-center items-end landscape:h-[65%] portrait:h-[45%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
+          <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
             <b>Pejabat dan Pengurus Desa</b>
           </div>
           <div className="flex bg-[#E9B63B] h-[2%] w-[8%] rounded-[5px] mt-[1%]"></div>
-          <div className="flex justify-center items-center h-[33%] w-[100%] portrait:text-[clamp(12px,1.3vh,18px)]">
+          <div className="flex justify-center items-center h-[33%] w-[100%] p-[5%] sm:p-0 text-center portrait:text-[clamp(12px,1.3vh,18px)]">
             Tim kepemimpinan desa yang berdedikasi untuk melayani dan memajukan
             kesejahteraan masyarakat
           </div>
         </div>
         <div className="flex justify-center items-center h-[70%]">
-          <div className="flex items-center gap-[2%] overflow-x-auto snap-x snap-mandatory px-4 scrollbar-hide w-[80%] h-[70%]">
-            <div className="hidden start-snap"></div>
+          <div className="flex flex-col sm:flex-row items-center gap-[2%] overflow-x-auto snap-x snap-mandatory px-4 scrollbar-hide w-[80%] h-[70%]">
+            <div className="flex sm:hidden start-snap"></div>
             {data.map((item, i) => (
               <div
                 key={i}
-                className="flex justify-center items-center flex-shrink-0 lg:w-[23.7%] md:w-[23%] h-[90%]"
+                className="flex justify-center items-center flex-shrink-0 landscape:lg:w-[23.7%] w-[70%] portrait:lg:w-[32.5%] md:w-[32.5%] h-[90%]"
               >
                 <div className="flex flex-col gap-[1%] justify-center items-center rounded-xl shadow-[0_3px_16px_rgba(0,0,0,0.12)] p-3 text-center h-[100%] w-full">
                   <div className="flex justify-center items-center w-[40%] aspect-square rounded-full border-2 border-yellow-400">
@@ -285,39 +285,40 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            <div className="flex sm:hidden start-snap"></div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center landscape:h-[150vh] portrait:w-[100%] portrait:aspect-[5/4.5] bg-[#FFF8DE]">
+      <div className="flex flex-col items-center landscape:h-[150vh] portrait:w-[100%] portrait:aspect-[1/4] portrait:lg:aspect-[5/4.5] portrait:sm:aspect-[1/1.15] bg-[#FFF8DE]">
         <div className="flex flex-col items-center h-[100%] w-[90%]">
           <div className="flex flex-col h-[67%] w-[100%] gap-[2%]">
-            <div className="flex flex-col items-center h-[30%] w-[100%]">
-              <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)]">
+            <div className="flex flex-col items-center h-[30%] w-[100%] gap-[3%] sm:gap-0">
+              <div className="flex justify-center items-end h-[40%] sm:h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
                 <b>Produk Unggulan Desa</b>
               </div>
               <div className="flex bg-[#E9B63B] h-[2%] w-[8%] rounded-[5px] mt-[1%]"></div>
-              <div className="flex justify-center items-center h-[33%] w-[100%]">
+              <div className="flex justify-center items-center h-[33%] w-[100%] text-center">
                 Produk berkualitas dari UMKM lokal yang dikelola dengan penuh
                 dedikasi oleh masyarakat desa
               </div>
             </div>
-            <div className="flex flex-row h-[70%] w-[100%] rounded-2xl bg-white shadow-[0_3px_16px_rgba(0,0,0,0.20)]">
-              <div className="relative w-[50%]">
+            <div className="flex flex-col sm:flex-row h-[70%] w-[100%] rounded-2xl bg-white shadow-[0_3px_16px_rgba(0,0,0,0.20)]">
+              <div className="relative w-[100%] h-[50%] sm:w-[50%] sm:h-[100%]">
                 <div className="absolute w-[100%] h-[100%]">
                   <div className="flex justify-center items-center h-[100%] w-[100%]">
                     Image
                   </div>
                 </div>
-                <div className="absolute top-5 left-5 w-[25%] h-[7%] bg-[#FFD41D] text-[clamp(12px,1.1vw,15px)] rounded-full">
-                  <div className="flex justify-center items-center h-[100%] w-[100%] text-[clamp(10px,1vw,13px)]">
+                <div className="absolute top-5 left-5 w-[40%] sm:w-[30%] h-[10%] sm:h-[7%] bg-[#FFD41D] text-[clamp(12px,1.1vw,15px)] rounded-full">
+                  <div className="flex justify-center items-center h-[100%] w-[100%] text-[clamp(10px,1vw,15px)]">
                     PRODUK UNGGULAN
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center items-center w-[50%]">
+              <div className="flex justify-center items-center w-[100%] h-[100%] sm:w-[50%]">
                 <div className="flex flex-col h-[90%] w-[90%]">
                   <div className="flex h-[7%]">
-                    <div className="flex justify-center items-center bg-[#A8BBA3] w-[25%] h-[100%] rounded-sm text-[#452829] font-bold p-[1px]  text-[clamp(12px,1.1vw,15px)]">
+                    <div className="flex justify-center items-center bg-[#A8BBA3] w-[25%] h-[100%] rounded-sm text-[#452829] font-bold p-[1px]  text-[clamp(10px,1vw,15px)]">
                       Produk Alami
                     </div>
                   </div>
@@ -376,7 +377,7 @@ export default function Home() {
                     <div className="flex items-center text-gray-500 text-[clamp(12px,1.2vw,20px)] line-through">
                       Rp.{produkData[1].price * (1 - produkData[1].disc / 100)}
                     </div>
-                    <div className="flex items-center justify-center w-[10%] h-[40%] bg-[#AA2B1D] rounded-md text-white text-[clamp(12px,1.2vw,20px)]">
+                    <div className="flex items-center justify-center w-[15%] sm:w-[10%] h-[40%] bg-[#AA2B1D] rounded-md text-white text-[clamp(12px,1.2vw,20px)]">
                       -{produkData[1].disc}%
                     </div>
                   </div>
@@ -389,12 +390,12 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-row items-center h-[33%] w-[100%]">
-            <div className="flex items-center gap-6 overflow-x-auto snap-x snap-mandatory px-4 scrollbar-hide w-[100%] h-[100%]">
+            <div className="flex items-center gap-6 portrait:lg:gap-6 portrait:sm:gap-4 overflow-x-auto snap-x snap-mandatory px-4 scrollbar-hide w-[100%] h-[100%]">
               <div className="hidden start-snap"></div>
               {produkData.map((item, i) => (
                 <div
                   key={i}
-                  className="flex justify-center items-center flex-shrink-0 w-[32%] h-[100%]"
+                  className="flex justify-center items-center flex-shrink-0 landscape:w-[32%] portrait:w-[100%] portrait:lg:w-[32%] portrait:sm:w-[49%] h-[100%]"
                 >
                   <div className="flex flex-col gap-2 justify-center items-center rounded-xl shadow-[0_3px_16px_rgba(0,0,0,0.12)] p-3 text-center h-[90%] w-full aspect-[3/4] bg-white">
                     <div className="flex justify-center items-center w-[95%] h-[60%] rounded-2xl border-2 border-yellow-400">
@@ -425,9 +426,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center landscape:h-[140vh] portrait:w-[100%] portrait:aspect-[5/4.5] gap-[2%]">
+      <div className="flex flex-col items-center landscape:h-[140vh] portrait:w-[100%] portrait:aspect-[5/4.5] portrait:md:aspect-[1/1.2] gap-[2%]">
         <div className="flex flex-col items-center h-[20%] w-[100%]">
-          <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)]">
+          <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
             <b>Lokasi Desa</b>
           </div>
           <div className="flex bg-[#E9B63B] h-[2%] w-[8%] rounded-[5px] mt-[1%]"></div>
@@ -501,9 +502,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center landscape:h-[100vh] portrait:w-[100%] portrait:aspect-[3/1.8] bg-[#F5F2F2]">
+      <div className="flex flex-col items-center landscape:h-[100vh] portrait:w-[100%] portrait:lg:aspect-[3/1.8] portrait:md:aspect-[3/2.5] bg-[#F5F2F2]">
         <div className="flex flex-col items-center h-[20%] w-[100%]">
-          <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)]">
+          <div className="flex justify-center items-end h-[65%] w-[100%] text-[#452829] text-[clamp(12px,2vw,40px)] portrait:text-[clamp(12px,2vh,40px)]">
             <b>Kabar Desa</b>
           </div>
           <div className="flex bg-[#E9B63B] h-[2%] w-[8%] rounded-[5px] mt-[1%]"></div>
@@ -519,7 +520,7 @@ export default function Home() {
               {newsData.map((item, i) => (
                 <div
                   key={i}
-                  className="flex justify-center items-center flex-shrink-0 w-[32%] h-[100%]"
+                  className="flex justify-center items-center flex-shrink-0 landscape:w-[32%] portrait:lg:w-[32%] portrait:md:w-[49%] h-[100%]"
                 >
                   <div className="flex flex-col justify-start items-center rounded-xl shadow-[0_3px_16px_rgba(0,0,0,0.12)] h-[90%] w-full aspect-[3/4] bg-white">
                     <div className="flex justify-center items-center w-[100%] h-[60%] rounded-t-xl border-1 border-yellow-400">
@@ -560,7 +561,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col bg-[#3B060A] landscape:h-[100vh] portrait:w-[100%] portrait:aspect-[2/1.2]">
+      <div className="flex flex-col bg-[#3B060A] landscape:h-[100vh] portrait:w-[100%] portrait:aspect-[2/1.3]">
         <div className="flex flex-col justify-center h-[43%] bg-[#B87C4C]">
           <div className="flex flex-col justify-center items-center text-center gap-3 h-[65%]">
             <div className="flex font-bold text-[clamp(12px,2.3vw,40px)] portrait:text-[clamp(12px,2.3vh,40px)] text-white">
@@ -598,7 +599,7 @@ export default function Home() {
                     <div className="flex items-end font-semibold h-[50%] w-[100%] text-white text-[clamp(12px,1.5vw,30px)]">
                       Desa Sejahtera
                     </div>
-                    <div className="flex h-[50%] w-[100%] text-yellow-500">
+                    <div className="flex h-[50%] w-[100%] text-yellow-500 portrait:text-[clamp(10px,1vh,15px)]">
                       Kabupaten Makmur
                     </div>
                   </div>
@@ -651,7 +652,7 @@ export default function Home() {
                   Kontak Kami
                 </div>
                 <div className="flex items-center h-[85%]">
-                  <div className="flex flex-col gap-3 h-[80%] w-[100%]">
+                  <div className="flex flex-col landscape:gap-3 portrait:lg:gap-3 portrait:md:gap-1.5 h-[80%] w-[100%]">
                     <div className="flex flex-row items-center gap-3 h-[25%]">
                       <FaLocationDot className="h-[80%] aspect-square text-yellow-500" />
                       <div className="text-[#D9CFC7] text-[clamp(10px,1vw,15px)]">
@@ -672,13 +673,13 @@ export default function Home() {
                     </div>
                     <div className="flex flex-row gap-3 h-[25%]">
                       <div className="flex justify-center items-center bg-white/30 rounded-full h-[100%] aspect-square">
-                        <FaFacebookF className="h-[85%] text-white text-[clamp(10px,1.2vw,15px)]" />
+                        <FaFacebookF className="landscape:h-[85%] portrait:lg:h-[85%] portrait:md:h-[60%] text-white text-[clamp(10px,1.2vw,15px)]" />
                       </div>
                       <div className="flex justify-center items-center bg-white/30 rounded-full h-[100%] aspect-square">
-                        <FaInstagram className="h-[85%] text-white text-[clamp(10px,1.5vw,20px)]" />
+                        <FaInstagram className="landscape:h-[85%] portrait:lg:h-[85%] portrait:md:h-[60%] text-white text-[clamp(10px,1.5vw,20px)]" />
                       </div>
                       <div className="flex justify-center items-center bg-white/30 rounded-full h-[100%] aspect-square">
-                        <FaYoutube className="h-[85%] text-white text-[clamp(10px,1.5vw,20px)]" />
+                        <FaYoutube className="landscape:h-[85%] portrait:lg:h-[85%] portrait:md:h-[60%] text-white text-[clamp(10px,1.5vw,20px)]" />
                       </div>
                     </div>
                   </div>
@@ -686,7 +687,7 @@ export default function Home() {
               </div>
             </div>
             <div className="h-[1px] w-[100%] bg-white"></div>
-            <div className="flex justify-center items-center h-[20%] w-[100%] text-white">
+            <div className="flex justify-center items-center h-[20%] w-[100%] text-white text-[clamp(10px,1.5vw,20px)]">
               © 2025 Desa Sejahtera. All rights reserved.
             </div>
           </div>
