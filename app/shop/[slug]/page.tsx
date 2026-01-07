@@ -1,3 +1,5 @@
+// "i think we shouldnt using slug for shop item? imagine somebody selling same thing, same title.", sina asking calmly
+
 import { getShopItemData } from "@/services/getShopItemData-shopPage";
 
 export default async function Page({
