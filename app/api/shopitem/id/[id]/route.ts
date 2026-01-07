@@ -7,11 +7,10 @@ import { generateSlug } from "@/libs/generateSlugHelper";
 
 const ShopItem = z.object({
   name: z.string(),
-  price: z.int(),
+  price: z.coerce.number(),
   contact: z.string(),
   description: z.string(),
-  featuredImageUrl: z.string().min(5),
-  // additionalImages: z.array(z.string().min(5)),
+  featuredImageUrl: z.string().min(5).optional(),
 });
 
 export async function PUT(
