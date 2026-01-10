@@ -11,12 +11,14 @@ export default function Page() {
   const [price, setPrice] = useState(0);
   const [contact, setContact] = useState("");
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [file, setFile] = useState<(File | null)[]>([]);
+  const fileInputRef = useRef<(HTMLInputElement | null)[]>([]);
+  const howMuchImages = [0, 1, 2, 3, 4];
 
-  const handleAddArticle = async (objectName: string) => {
+  const handleAddArticle = async (objectName: string[]) => {
     try {
       const token = localStorage.getItem("auth");
+      console.log(objectName);
 
       const res = await fetch("http://localhost:3000/api/shopitem", {
         method: "POST",
@@ -29,8 +31,7 @@ export default function Page() {
           price: price,
           contact: contact,
           description: description,
-          featuredImageUrl: objectName,
-          // additionalImages: ["xxxxxx"]
+          imagesUrl: objectName,
         }),
       });
 
@@ -45,44 +46,66 @@ export default function Page() {
       console.error(err);
     }
   };
-  console.log(file);
 
   const handleUpload = async () => {
-    if (file.length == 0) return;
+    // A. Filter: Hanya ambil yang bukan null (membuang empty slots)
+    // BENAR (Mengecek keberadaan file secara pasti)
+    const validFiles = file.filter((f): f is File => !!f);
+
+    if (validFiles.length === 0) {
+      alert("Pilih minimal satu gambar!");
+      return;
+    }
 
     try {
-      const { success, url, objectName, error } = await getPresignedUploadUrl(
-        file[0].name,
-        file[0].type,
-      );
+      // B. Map: Ubah setiap file menjadi sebuah Promise upload
+      const uploadPromises = validFiles.map(async (currentFile) => {
+        // 1. Get Presigned URL
+        const { success, url, objectName, error } = await getPresignedUploadUrl(
+          currentFile.name,
+          currentFile.type,
+        );
 
-      if (!success || !url || !objectName) {
-        throw new Error(error || "Gagal mendapatkan URL upload");
-      }
+        if (!success || !url || !objectName) {
+          throw new Error(
+            `Gagal generate URL untuk ${currentFile.name}: ${error}`,
+          );
+        }
 
-      // upload to minio (Direct from Browser)
-      const uploadRes = await fetch(url, {
-        method: "PUT",
-        body: file[0],
-        headers: {
-          "Content-Type": file[0].type,
-        },
+        // 2. Upload ke MinIO (PUT)
+        const uploadRes = await fetch(url, {
+          method: "PUT",
+          body: currentFile,
+          headers: {
+            "Content-Type": currentFile.type,
+          },
+        });
+
+        if (!uploadRes.ok) {
+          throw new Error(`Gagal upload file ${currentFile.name} ke storage`);
+        }
+
+        // 3. Return objectName jika sukses
+        return objectName;
       });
 
-      if (!uploadRes.ok) {
-        throw new Error("Gagal upload ke Minio");
-      }
+      // C. Promise.all: Tunggu semua proses upload selesai
+      // Hasilnya adalah array berisi objectName yang sukses: ["img1.jpg", "img2.png", ...]
+      const uploadedObjectNames = await Promise.all(uploadPromises);
 
-      handleAddArticle(objectName);
+      // D. Panggil fungsi simpan ke DB dengan array hasil upload
+      handleAddArticle(uploadedObjectNames);
     } catch (err: any) {
-      console.error(err);
+      console.error("Upload Error:", err);
+      alert("Terjadi kesalahan saat mengupload gambar.");
     }
   };
 
   // custom trigger biar minjem fungsi dari <input/> di button custom
-  const handleCustomClick = () => {
-    fileInputRef.current?.click();
+  const handleCustomClick = (index: number) => {
+    fileInputRef.current[index]?.click();
   };
+  console.log(file);
 
   return (
     <>
@@ -120,45 +143,58 @@ export default function Page() {
           />
         </div>
 
-        {/* Input gambar (hidden)*/}
-        <div className="flex items-center gap-5">
-          <p>Gambar:</p>
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            onChange={(e) => {
-              const selectedFile = e.target.files?.[0];
-              if (selectedFile) {
-                setFile([selectedFile]);
-              }
-            }}
-            className="hidden"
-          />
-        </div>
+        <div className="flex items-start gap-2">
+          <span>Gambar: </span>
+          {howMuchImages.map((i) => (
+            <div key={i}>
+              {/* Input gambar (hidden)*/}
+              <div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={(el) => {
+                    fileInputRef.current[i] = el;
+                  }}
+                  onChange={(e) => {
+                    const selectedFile = e.target.files?.[0];
+                    if (selectedFile) {
+                      // 4. LOGIC MENGUBAH ARRAY PADA INDEX TERTENTU
+                      setFile((prev) => {
+                        const newFiles = [...prev]; // Copy array lama
+                        newFiles[i] = selectedFile; // Ubah index ke-i
+                        return newFiles; // Simpan array baru
+                      });
+                    }
+                  }}
+                  className="hidden"
+                />
+              </div>
 
-        {/* Custom input image button */}
-        {!file[0] ? (
-          <div className="flex">
-            <div
-              className="flex items-center justify-center text-sm text-slate-400
+              {/* the real input gambar*/}
+              {!file[i] ? (
+                <div className="flex">
+                  <div
+                    className="flex items-center justify-center text-sm text-slate-400
               bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 cursor-pointer
               mb-5 flex-col hover:bg-slate-100 transition"
-              onClick={handleCustomClick}
-            >
-              <LuImagePlus className="text-2xl mb-2" />
-              <span>Tambah</span>
-            </div>
-          </div>
-        ) : (
-          <img
-            src={URL.createObjectURL(file[0])}
-            onClick={handleCustomClick}
-            className="flex items-center justify-center text-sm text-slate-400
+                    onClick={() => handleCustomClick(i)}
+                  >
+                    <LuImagePlus className="text-2xl mb-2" />
+                    <span>Tambah</span>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={URL.createObjectURL(file[i]!)}
+                  onClick={() => handleCustomClick(i)}
+                  className="flex items-center justify-center text-sm text-slate-400
             bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 cursor-pointer
             mb-5 flex-col hover:bg-slate-100 transition"
-          />
-        )}
+                />
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Input deskripsi */}
         <div className="flex gap-5 mb-5 flex-col md:flex-row">
