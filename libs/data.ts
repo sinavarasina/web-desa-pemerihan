@@ -10,38 +10,48 @@ export interface ProductCard {
 export const products: ProductCard[] = [
   {
     id: 1,
-    title: 'Anyaman Bambu Tradisional',
-    image: 'https://plus.unsplash.com/premium_photo-1671282997702-fd42fa5f200e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    description: 'Kerajinan dari bambu pilihan berkualitas premium. Setiap produk dibuat dengan tangan menggunakan teknik tradisional turun temurun.',
-    seller: 'Pengrajin Lokal Kami'
+    title: "Anyaman Bambu Tradisional",
+    image:
+      "https://plus.unsplash.com/premium_photo-1671282997702-fd42fa5f200e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Kerajinan dari bambu pilihan berkualitas premium. Setiap produk dibuat dengan tangan menggunakan teknik tradisional turun temurun.",
+    seller: "Pengrajin Lokal Kami",
   },
   {
     id: 2,
-    title: 'Tas Kain Tenun',
-    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=500&fit=crop',
-    description: 'Tas kain dengan motif tenun kharas yang elegan dan tahan lama. Cocok untuk berbagai gaya hidup modern.',
-    seller: 'Pengrajin Lokal Kami'
+    title: "Tas Kain Tenun",
+    image:
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=500&fit=crop",
+    description:
+      "Tas kain dengan motif tenun kharas yang elegan dan tahan lama. Cocok untuk berbagai gaya hidup modern.",
+    seller: "Pengrajin Lokal Kami",
   },
   {
     id: 3,
-    title: 'Kerajinan Kayu Ukir',
-    image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
-    description: 'Hasil carving rumah tangga yang unik. Menampilkan keahlian perajin dalam mengolah kayu alami.',
-    seller: 'Pengrajin Lokal Kami'
+    title: "Kerajinan Kayu Ukir",
+    image:
+      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop",
+    description:
+      "Hasil carving rumah tangga yang unik. Menampilkan keahlian perajin dalam mengolah kayu alami.",
+    seller: "Pengrajin Lokal Kami",
   },
   {
     id: 4,
-    title: 'Batik Tulis Tangan',
-    image: 'https://images.unsplash.com/photo-1604973104381-870c92f10343?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    description: 'Kain batik dengan motif klasik yang dibuat dengan teknik tulis. Setiap helai unik dan penuh makna.',
-    seller: 'Pengrajin Lokal Kami'
+    title: "Batik Tulis Tangan",
+    image:
+      "https://images.unsplash.com/photo-1604973104381-870c92f10343?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description:
+      "Kain batik dengan motif klasik yang dibuat dengan teknik tulis. Setiap helai unik dan penuh makna.",
+    seller: "Pengrajin Lokal Kami",
   },
   {
     id: 5,
-    title: 'Keramik & Gerabah',
-    image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
-    description: 'Perpaduan uishar dan konsan dengan landah tradisional. Fungsional sekaligus bernilai seni tinggi.',
-    seller: 'Pengrajin Lokal Kami'
+    title: "Keramik & Gerabah",
+    image:
+      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop",
+    description:
+      "Perpaduan uishar dan konsan dengan landah tradisional. Fungsional sekaligus bernilai seni tinggi.",
+    seller: "Pengrajin Lokal Kami",
   },
 ];
 
@@ -62,9 +72,10 @@ export interface Article {
 export const articles: Article[] = [
   {
     id: 1,
-    slug: 'panen-raya-madu-apikalis-2024',
-    title: 'Panen Raya Madu Apikalis 2024 Menghasilkan 500kg Madu Berkualitas',
-    excerpt: 'Kelompok tani madu Apikalis Desa Pemerihan berhasil memanen 500kg madu berkualitas tinggi pada musim panen tahun 2024 ini.',
+    slug: "panen-raya-madu-apikalis-2024",
+    title: "Panen Raya Madu Apikalis 2024 Menghasilkan 500kg Madu Berkualitas",
+    excerpt:
+      "Kelompok tani madu Apikalis Desa Pemerihan berhasil memanen 500kg madu berkualitas tinggi pada musim panen tahun 2024 ini.",
     content: `
       <p>Desa Pemerihan kembali mencatatkan prestasi gemilang dalam sektor perlebahan. Kelompok Tani Madu Apikalis yang telah berdiri sejak 2018 berhasil memanen 500 kilogram madu berkualitas tinggi pada musim panen tahun 2024 ini.</p>
       
@@ -76,17 +87,19 @@ export const articles: Article[] = [
       
       <p>Kepala Desa Pemerihan, Ibu Siti Nurhaliza, mengapresiasi prestasi kelompok tani ini. "Kami berkomitmen terus mendukung UMKM desa, termasuk kelompok peternak lebah. Kedepannya kami akan fasilitasi pelatatan produksi dan sertifikasi halal," ujarnya.</p>
     `,
-    date: '2024-12-15',
-    author: 'Tim Redaksi Desa',
-    category: 'UMKM',
-    image: 'https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG9uZXl8ZW58MHx8MHx8fDA%3D',
-    tags: ['madu', 'umkm', 'pertanian', 'apikalis']
+    date: "2024-12-15",
+    author: "Tim Redaksi Desa",
+    category: "UMKM",
+    image:
+      "https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG9uZXl8ZW58MHx8MHx8fDA%3D",
+    tags: ["madu", "umkm", "pertanian", "apikalis"],
   },
   {
     id: 2,
-    slug: 'penyaluran-blt-dana-desa-tahap-1',
-    title: 'Penyaluran BLT Dana Desa Tahap 1 untuk 150 KK',
-    excerpt: 'Pemerintah Desa Pemerihan menyalurkan Bantuan Langsung Tunai (BLT) Dana Desa tahap pertama kepada 150 Kepala Keluarga penerima manfaat.',
+    slug: "penyaluran-blt-dana-desa-tahap-1",
+    title: "Penyaluran BLT Dana Desa Tahap 1 untuk 150 KK",
+    excerpt:
+      "Pemerintah Desa Pemerihan menyalurkan Bantuan Langsung Tunai (BLT) Dana Desa tahap pertama kepada 150 Kepala Keluarga penerima manfaat.",
     content: `
       <p>Pemerintah Desa Pemerihan resmi menyalurkan Bantuan Langsung Tunai (BLT) Dana Desa tahap pertama kepada 150 Kepala Keluarga (KK) yang terdampak ekonomi. Penyaluran dilaksanakan di Balai Desa Pemerihan pada Selasa, 10 Desember 2024.</p>
       
@@ -100,17 +113,19 @@ export const articles: Article[] = [
       
       <p>Rencananya, penyaluran BLT Dana Desa tahap 2 akan dilaksanakan pada bulan Februari 2025 mendatang.</p>
     `,
-    date: '2024-12-10',
-    author: 'Tim Redaksi Desa',
-    category: 'Pembangunan',
-    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=600&fit=crop',
-    tags: ['blt', 'dana desa', 'bantuan sosial']
+    date: "2024-12-10",
+    author: "Tim Redaksi Desa",
+    category: "Pembangunan",
+    image:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=600&fit=crop",
+    tags: ["blt", "dana desa", "bantuan sosial"],
   },
   {
     id: 3,
-    slug: 'gotong-royong-pembersihan-jalan-desa',
-    title: 'Gotong Royong Pembersihan Jalan Desa Sambut Tahun Baru',
-    excerpt: 'Warga Desa Pemerihan kompak melaksanakan gotong royong pembersihan jalan dan saluran air untuk menyambut tahun baru 2025.',
+    slug: "gotong-royong-pembersihan-jalan-desa",
+    title: "Gotong Royong Pembersihan Jalan Desa Sambut Tahun Baru",
+    excerpt:
+      "Warga Desa Pemerihan kompak melaksanakan gotong royong pembersihan jalan dan saluran air untuk menyambut tahun baru 2025.",
     content: `
       <p>Suasana gotong royong memenuhi jalan-jalan utama Desa Pemerihan pada Minggu pagi, 8 Desember 2024. Ratusan warga dari berbagai RT/RW turun bersama-sama membersihkan jalan desa dan saluran air.</p>
       
@@ -124,17 +139,19 @@ export const articles: Article[] = [
       
       <p>Setelah kegiatan selesai sekitar pukul 10.00 WIB, warga menikmati hidangan nasi bungkus dan minuman yang disediakan oleh pemerintah desa.</p>
     `,
-    date: '2024-12-08',
-    author: 'Tim Redaksi Desa',
-    category: 'Kegiatan Desa',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=600&fit=crop',
-    tags: ['gotong royong', 'kebersihan', 'lingkungan']
+    date: "2024-12-08",
+    author: "Tim Redaksi Desa",
+    category: "Kegiatan Desa",
+    image:
+      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=600&fit=crop",
+    tags: ["gotong royong", "kebersihan", "lingkungan"],
   },
   {
     id: 4,
-    slug: 'pelatihan-pengolahan-batik-tulis',
-    title: 'Pelatihan Pengolahan Batik Tulis untuk Ibu-ibu PKK',
-    excerpt: 'Dinas Perindustrian Kabupaten mengadakan pelatihan pembuatan batik tulis bagi ibu-ibu PKK Desa Pemerihan.',
+    slug: "pelatihan-pengolahan-batik-tulis",
+    title: "Pelatihan Pengolahan Batik Tulis untuk Ibu-ibu PKK",
+    excerpt:
+      "Dinas Perindustrian Kabupaten mengadakan pelatihan pembuatan batik tulis bagi ibu-ibu PKK Desa Pemerihan.",
     content: `
       <p>Sebanyak 30 ibu-ibu anggota PKK Desa Pemerihan mengikuti pelatihan pembuatan batik tulis yang diselenggarakan oleh Dinas Perindustrian dan Perdagangan Kabupaten Pesisir Barat. Pelatihan berlangsung selama 3 hari, dari tanggal 5-7 Desember 2024 di Balai Desa Pemerihan.</p>
       
@@ -146,17 +163,19 @@ export const articles: Article[] = [
       
       <p>Camat Bengkunat, Bapak Drs. Sutopo, M.Si yang hadir dalam penutupan pelatihan berpesan, "Batik adalah warisan budaya bangsa. Dengan menguasai skill membatik, ibu-ibu tidak hanya melestarikan budaya tapi juga bisa mandiri secara ekonomi."</p>
     `,
-    date: '2024-12-07',
-    author: 'Tim Redaksi Desa',
-    category: 'Pemberdayaan',
-    image: 'https://images.unsplash.com/photo-1604973104381-870c92f10343?w=1200&h=600&fit=crop',
-    tags: ['batik', 'pkk', 'pelatihan', 'umkm']
+    date: "2024-12-07",
+    author: "Tim Redaksi Desa",
+    category: "Pemberdayaan",
+    image:
+      "https://images.unsplash.com/photo-1604973104381-870c92f10343?w=1200&h=600&fit=crop",
+    tags: ["batik", "pkk", "pelatihan", "umkm"],
   },
   {
     id: 5,
-    slug: 'wisata-pantai-pemerihan-ramai-dikunjungi',
-    title: 'Wisata Pantai Pemerihan Ramai Dikunjungi Saat Libur Akhir Tahun',
-    excerpt: 'Pantai Pemerihan menjadi destinasi favorit wisatawan lokal untuk menghabiskan waktu libur akhir tahun.',
+    slug: "wisata-pantai-pemerihan-ramai-dikunjungi",
+    title: "Wisata Pantai Pemerihan Ramai Dikunjungi Saat Libur Akhir Tahun",
+    excerpt:
+      "Pantai Pemerihan menjadi destinasi favorit wisatawan lokal untuk menghabiskan waktu libur akhir tahun.",
     content: `
       <p>Kawasan wisata Pantai Pemerihan dibanjiri pengunjung pada libur akhir tahun ini. Sejak pagi hingga sore hari, ratusan wisatawan memadati pantai yang terkenal dengan ombak tenang dan pemandangan sunset yang memukau ini.</p>
       
@@ -170,17 +189,19 @@ export const articles: Article[] = [
       
       <p>Salah satu pengunjung dari Bandar Lampung, Rina (32) mengaku senang berkunjung ke Pantai Pemerihan. "Pantainya masih bersih dan tidak terlalu ramai. Cocok untuk liburan keluarga. Kami pasti akan datang lagi," ucapnya.</p>
     `,
-    date: '2024-12-28',
-    author: 'Tim Redaksi Desa',
-    category: 'Wisata',
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop',
-    tags: ['pantai', 'wisata', 'libur']
+    date: "2024-12-28",
+    author: "Tim Redaksi Desa",
+    category: "Wisata",
+    image:
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+    tags: ["pantai", "wisata", "libur"],
   },
   {
     id: 6,
-    slug: 'musyawarah-desa-rencana-pembangunan',
-    title: 'Musyawarah Desa Bahas Rencana Pembangunan 2025',
-    excerpt: 'Pemerintah Desa Pemerihan menggelar musyawarah desa untuk membahas prioritas pembangunan tahun 2025.',
+    slug: "musyawarah-desa-rencana-pembangunan",
+    title: "Musyawarah Desa Bahas Rencana Pembangunan 2025",
+    excerpt:
+      "Pemerintah Desa Pemerihan menggelar musyawarah desa untuk membahas prioritas pembangunan tahun 2025.",
     content: `
       <p>Pemerintah Desa Pemerihan menggelar Musyawarah Desa (Musdes) pada Kamis malam, 20 Desember 2024 di Balai Desa. Acara yang dihadiri oleh perangkat desa, BPD, tokoh masyarakat, dan perwakilan RT/RW ini membahas rencana prioritas pembangunan desa tahun 2025.</p>
       
@@ -200,12 +221,13 @@ export const articles: Article[] = [
       
       <p>Ketua BPD Desa Pemerihan, Bapak Ahmad Fauzi menutup acara dengan harapan agar semua program yang direncanakan dapat terealisasi dengan baik. "Mari kita kawal bersama pembangunan desa kita. Jangan ada lagi program yang mangkrak," tegasnya.</p>
     `,
-    date: '2024-12-20',
-    author: 'Tim Redaksi Desa',
-    category: 'Pembangunan',
-    image: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&h=600&fit=crop',
-    tags: ['musyawarah', 'pembangunan', 'dana desa']
-  }
+    date: "2024-12-20",
+    author: "Tim Redaksi Desa",
+    category: "Pembangunan",
+    image:
+      "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&h=600&fit=crop",
+    tags: ["musyawarah", "pembangunan", "dana desa"],
+  },
 ];
 
 // Popular articles for sidebar
@@ -223,8 +245,8 @@ export interface ArchiveMonth {
 }
 
 export const archiveMonths: ArchiveMonth[] = [
-  { month: 'Desember', year: 2024, count: 6 },
-  { month: 'November', year: 2024, count: 4 },
-  { month: 'Oktober', year: 2024, count: 5 },
-  { month: 'September', year: 2024, count: 3 },
+  { month: "Desember", year: 2024, count: 6 },
+  { month: "November", year: 2024, count: 4 },
+  { month: "Oktober", year: 2024, count: 5 },
+  { month: "September", year: 2024, count: 3 },
 ];

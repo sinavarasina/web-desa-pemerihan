@@ -1,110 +1,55 @@
-'use client';
-
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Users, Home, Building2 } from 'lucide-react';
-import ContactModal from '@/components/shared/ContactModal';
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export default function HomePage() {
-  const [selectedContact, setSelectedContact] = useState<number | null>(null);
-
-  // Officials Data
-  const officials = [
-    {
-      name: 'Bapak Surya Wijaya',
-      role: 'Kepala Desa',
-      image: 'https://placehold.co/200x200/2D5A27/white?text=Kepala+Desa',
-      phone: '+62 812-3456-7890',
-      email: 'kepala.desa@pemerihan.id'
-    },
-    {
-      name: 'Bapak Ahmad Faozi',
-      role: 'Sekretaris Desa',
-      image: 'https://placehold.co/200x200/2D5A27/white?text=Sekretaris',
-      phone: '+62 813-4567-8901',
-      email: 'sekretaris@pemerihan.id'
-    },
-    {
-      name: 'Ibu Siti Nurhaliza',
-      role: 'Bendahara',
-      image: 'https://placehold.co/200x200/2D5A27/white?text=Bendahara',
-      phone: '+62 814-5678-9012',
-      email: 'bendahara@pemerihan.id'
-    },
-    {
-      name: 'Bapak Bambang Santoso',
-      role: 'Kasi Pemerintahan',
-      image: 'https://placehold.co/200x200/2D5A27/white?text=Kasi',
-      phone: '+62 815-6789-0123',
-      email: 'kasi@pemerihan.id'
-    },
-  ];
-
-  // Featured Products
-  const featuredProducts = [
-    {
-      name: 'Batik Tulis Sejahtera',
-      price: 'Rp 350.000',
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&auto=format&fit=crop',
-      badge: 'Produk Unggulan'
-    },
-    {
-      name: 'Rajut Arshika Lokal',
-      price: 'Rp 75.000',
-      image: 'https://plus.unsplash.com/premium_photo-1661683887049-69e8ae0a6c92?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      badge: 'Best Seller'
-    },
-    {
-      name: 'Keripikan Bambu',
-      price: 'Rp 25.000',
-      image: 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&auto=format&fit=crop',
-      badge: 'Terlaris'
-    },
-  ];
-
   // News/Articles
   const newsArticles = [
     {
-      title: 'Pelatihan Pembuatan Batik untuk Ibu-Ibu PKK Desa Sejahtera',
-      date: '12 Desember 2024',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&auto=format&fit=crop',
-      category: 'UMKM',
-      excerpt: 'Program pemberdayaan masyarakat melalui pelatihan batik...'
+      title: "Pelatihan Pembuatan Batik untuk Ibu-Ibu PKK Desa Sejahtera",
+      date: "12 Desember 2024",
+      image:
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&auto=format&fit=crop",
+      category: "UMKM",
+      excerpt: "Program pemberdayaan masyarakat melalui pelatihan batik...",
     },
     {
-      title: 'Workshop Urban Farming di Sawah Desa',
-      date: '10 Desember 2024',
-      image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=400&auto=format&fit=crop',
-      category: 'Pertanian',
-      excerpt: 'Pelatihan bertani modern untuk meningkatkan hasil panen...'
+      title: "Workshop Urban Farming di Sawah Desa",
+      date: "10 Desember 2024",
+      image:
+        "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=400&auto=format&fit=crop",
+      category: "Pertanian",
+      excerpt: "Pelatihan bertani modern untuk meningkatkan hasil panen...",
     },
     {
-      title: 'Festival Kuliner dan Promosi UMKM Lokal',
-      date: '8 Desember 2024',
-      image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&auto=format&fit=crop',
-      category: 'Event',
-      excerpt: 'Promosi produk lokal dalam festival kuliner desa...'
+      title: "Festival Kuliner dan Promosi UMKM Lokal",
+      date: "8 Desember 2024",
+      image:
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&auto=format&fit=crop",
+      category: "Event",
+      excerpt: "Promosi produk lokal dalam festival kuliner desa...",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-[500px] md:h-[600px] bg-cover bg-center"
         style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/images/Hero.webp)'
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/images/Hero.webp)",
         }}
       >
         <div className="relative h-full flex flex-col items-center justify-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
-            Selamat Datang di<br />
+            Selamat Datang di
+            <br />
             <span className="text-yellow-400">Desa Pemerihan</span>
           </h1>
           <p className="text-lg md:text-xl mb-8 text-center max-w-2xl">
             Kecamatan Bengkunat, Pesisir Barat, Lampung - Indonesia
           </p>
-          <a 
-            href="#about" 
+          <a
+            href="#about"
             className="bg-yellow-400 text-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-yellow-500 transition"
           >
             Jelajahi Desa →
@@ -122,27 +67,33 @@ export default function HomePage() {
             </h2>
             <div className="w-24 h-1 bg-yellow-400 mx-auto"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
             {/* Left Column - Text Content */}
             <div className="space-y-8">
               {/* Visi Desa */}
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Visi Desa</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Visi Desa
+                </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Mewujudkan Desa Sejahtera sebagai desa yang mandiri, sejahtera, dan berkelanjutan 
-                  dengan memanfaatkan potensi alam dan sumber daya manusia yang berkualitas untuk 
-                  kesejahteraan bersama.
+                  Mewujudkan Desa Sejahtera sebagai desa yang mandiri,
+                  sejahtera, dan berkelanjutan dengan memanfaatkan potensi alam
+                  dan sumber daya manusia yang berkualitas untuk kesejahteraan
+                  bersama.
                 </p>
               </div>
 
               {/* Sejarah Singkat */}
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Sejarah Singkat</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Sejarah Singkat
+                </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Desa Sejahtera didirikan pada tahun 1945 dan telah berkembang menjadi salah satu 
-                  desa percontohan di wilayah Kabupaten Makmur. Dengan luas wilayah 1.250 hektar, 
-                  desa ini dihuni oleh 3.500 jiwa yang mayoritas bermata pencaharian sebagai petani 
+                  Desa Sejahtera didirikan pada tahun 1945 dan telah berkembang
+                  menjadi salah satu desa percontohan di wilayah Kabupaten
+                  Makmur. Dengan luas wilayah 1.250 hektar, desa ini dihuni oleh
+                  3.500 jiwa yang mayoritas bermata pencaharian sebagai petani
                   dan pengrajin.
                 </p>
               </div>
@@ -150,15 +101,21 @@ export default function HomePage() {
               {/* Statistics */}
               <div className="grid grid-cols-3 gap-6 pt-4">
                 <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">3,500</div>
+                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">
+                    3,500
+                  </div>
                   <div className="text-sm text-gray-600">Penduduk</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">1,250</div>
+                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">
+                    1,250
+                  </div>
                   <div className="text-sm text-gray-600">Hektar</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">45+</div>
+                  <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-1">
+                    45+
+                  </div>
                   <div className="text-sm text-gray-600">UMKM</div>
                 </div>
               </div>
@@ -167,7 +124,7 @@ export default function HomePage() {
             {/* Right Column - Image */}
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img 
+                <img
                   src="https://plus.unsplash.com/premium_photo-1688472616515-6d7dce94a5ab?w=800&auto=format&fit=crop"
                   alt="Rumah Adat Desa Pemerihan"
                   className="w-full h-auto object-cover"
@@ -179,8 +136,12 @@ export default function HomePage() {
                       <span className="text-2xl">🏆</span>
                     </div>
                     <div>
-                      <div className="font-bold text-gray-900 text-sm md:text-base">Desa Terbaik 2023</div>
-                      <div className="text-xs text-gray-700">Kabupaten Makmur</div>
+                      <div className="font-bold text-gray-900 text-sm md:text-base">
+                        Desa Terbaik 2023
+                      </div>
+                      <div className="text-xs text-gray-700">
+                        Kabupaten Makmur
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -194,20 +155,23 @@ export default function HomePage() {
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
-            Video Profil Desa Pemerihan 
+            Video Profil Desa Pemerihan
           </h2>
           <p className="text-center text-gray-600 mb-12">
-            Saksikan keindahan dan kehidupan masyarakat Desa Pemerihan dalam video eksklusif ini
+            Saksikan keindahan dan kehidupan masyarakat Desa Pemerihan dalam
+            video eksklusif ini
           </p>
 
           <div className="max-w-4xl mx-auto">
             <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-amber-600">
-              <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
+              <div
+                className="relative w-full bg-black"
+                style={{ paddingBottom: "56.25%" }}
+              >
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src="https://www.youtube.com/embed/wB8AArJG6BE"
                   title="Video Desa Pemerihan"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -226,7 +190,8 @@ export default function HomePage() {
               Produk Unggulan Desa
             </h2>
             <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-              Produk berkualitas dari UMKM lokal yang dikerjakan dengan penuh dedikasi oleh masyarakat desa
+              Produk berkualitas dari UMKM lokal yang dikerjakan dengan penuh
+              dedikasi oleh masyarakat desa
             </p>
           </div>
 
@@ -235,7 +200,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               {/* Left - Product Image */}
               <div className="relative h-[450px] lg:h-auto">
-                <img 
+                <img
                   src="/images/Madu.webp"
                   alt="Madu Apikalis"
                   className="w-full h-full object-cover"
@@ -246,17 +211,21 @@ export default function HomePage() {
               <div className="p-8 lg:p-10 flex flex-col justify-center bg-white">
                 <div className="inline-flex items-center gap-2 mb-6 self-start bg-amber-100 px-4 py-2 rounded-full">
                   <span className="text-amber-700">⭐</span>
-                  <span className="text-sm font-bold text-amber-800 uppercase">Produk Unggulan</span>
+                  <span className="text-sm font-bold text-amber-800 uppercase">
+                    Produk Unggulan
+                  </span>
                 </div>
-                
+
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                   Madu Apikalis
                 </h3>
-                
+
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Madu murni berkualitas premium yang dihasilkan dari lebah lokal di hutan desa kami. Dipanen dengan metode tradisional yang menjaga keaslian dan khasiatnya.
+                  Madu murni berkualitas premium yang dihasilkan dari lebah
+                  lokal di hutan desa kami. Dipanen dengan metode tradisional
+                  yang menjaga keaslian dan khasiatnya.
                 </p>
-                
+
                 {/* Features Boxes */}
                 <div className="space-y-3 mb-6">
                   <div className="bg-amber-50 rounded-xl p-4 border border-amber-100">
@@ -265,8 +234,13 @@ export default function HomePage() {
                         🍯
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 mb-1">Konsumsi Kesehatan</h4>
-                        <p className="text-gray-600 text-sm">Kaya antioksidan, meningkatkan imunitas, dan menjaga kesehatan tubuh secara alami</p>
+                        <h4 className="font-bold text-gray-800 mb-1">
+                          Konsumsi Kesehatan
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          Kaya antioksidan, meningkatkan imunitas, dan menjaga
+                          kesehatan tubuh secara alami
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -276,8 +250,13 @@ export default function HomePage() {
                         ✨
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 mb-1">Masker Kosmetik Alami</h4>
-                        <p className="text-gray-600 text-sm">Melembabkan kulit, mengurangi jerawat, dan memberikan nutrisi alami untuk wajah bercahaya</p>
+                        <h4 className="font-bold text-gray-800 mb-1">
+                          Masker Kosmetik Alami
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          Melembabkan kulit, mengurangi jerawat, dan memberikan
+                          nutrisi alami untuk wajah bercahaya
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -286,7 +265,7 @@ export default function HomePage() {
                 {/* Contact Seller Box */}
                 <div className="bg-green-700 text-white rounded-xl p-6 mt-4">
                   <div className="flex items-center gap-3 mb-4">
-                    <img 
+                    <img
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces"
                       alt="Ibu Siti Nurhaliza"
                       className="w-12 h-12 rounded-full object-cover border-2 border-white"
@@ -302,8 +281,13 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 bg-white text-green-700 font-bold py-3 rounded-lg hover:bg-green-50 transition"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                      <path d="M476.9 161.1C435 119.1 379.2 96 319.9 96C197.5 96 97.9 195.6 97.9 318C97.9 357.1 108.1 395.3 127.5 429L96 544L213.7 513.1C246.1 530.8 282.6 540.1 319.8 540.1L319.9 540.1C442.2 540.1 544 440.5 544 318.1C544 258.8 518.8 203.1 476.9 161.1zM319.9 502.7C286.7 502.7 254.2 493.8 225.9 477L219.2 473L149.4 491.3L168 423.2L163.6 416.2C145.1 386.8 135.4 352.9 135.4 318C135.4 216.3 218.2 133.5 320 133.5C369.3 133.5 415.6 152.7 450.4 187.6C485.2 222.5 506.6 268.8 506.5 318.1C506.5 419.9 421.6 502.7 319.9 502.7zM421.1 364.5C415.6 361.7 388.3 348.3 383.2 346.5C378.1 344.6 374.4 343.7 370.7 349.3C367 354.9 356.4 367.3 353.1 371.1C349.9 374.8 346.6 375.3 341.1 372.5C308.5 356.2 287.1 343.4 265.6 306.5C259.9 296.7 271.3 297.4 281.9 276.2C283.7 272.5 282.8 269.3 281.4 266.5C280 263.7 268.9 236.4 264.3 225.3C259.8 214.5 255.2 216 251.8 215.8C248.6 215.6 244.9 215.6 241.2 215.6C237.5 215.6 231.5 217 226.4 222.5C221.3 228.1 207 241.5 207 268.8C207 296.1 226.9 322.5 229.6 326.2C232.4 329.9 268.7 385.9 324.4 410C359.6 425.2 373.4 426.5 391 423.9C401.7 422.3 423.8 410.5 428.4 397.5C433 384.5 433 373.4 431.6 371.1C430.3 368.6 426.6 367.2 421.1 364.5z"/>
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"
+                    >
+                      <path d="M476.9 161.1C435 119.1 379.2 96 319.9 96C197.5 96 97.9 195.6 97.9 318C97.9 357.1 108.1 395.3 127.5 429L96 544L213.7 513.1C246.1 530.8 282.6 540.1 319.8 540.1L319.9 540.1C442.2 540.1 544 440.5 544 318.1C544 258.8 518.8 203.1 476.9 161.1zM319.9 502.7C286.7 502.7 254.2 493.8 225.9 477L219.2 473L149.4 491.3L168 423.2L163.6 416.2C145.1 386.8 135.4 352.9 135.4 318C135.4 216.3 218.2 133.5 320 133.5C369.3 133.5 415.6 152.7 450.4 187.6C485.2 222.5 506.6 268.8 506.5 318.1C506.5 419.9 421.6 502.7 319.9 502.7zM421.1 364.5C415.6 361.7 388.3 348.3 383.2 346.5C378.1 344.6 374.4 343.7 370.7 349.3C367 354.9 356.4 367.3 353.1 371.1C349.9 374.8 346.6 375.3 341.1 372.5C308.5 356.2 287.1 343.4 265.6 306.5C259.9 296.7 271.3 297.4 281.9 276.2C283.7 272.5 282.8 269.3 281.4 266.5C280 263.7 268.9 236.4 264.3 225.3C259.8 214.5 255.2 216 251.8 215.8C248.6 215.6 244.9 215.6 241.2 215.6C237.5 215.6 231.5 217 226.4 222.5C221.3 228.1 207 241.5 207 268.8C207 296.1 226.9 322.5 229.6 326.2C232.4 329.9 268.7 385.9 324.4 410C359.6 425.2 373.4 426.5 391 423.9C401.7 422.3 423.8 410.5 428.4 397.5C433 384.5 433 373.4 431.6 371.1C430.3 368.6 426.6 367.2 421.1 364.5z" />
                     </svg>
                     Chat Sekarang
                   </a>
@@ -314,13 +298,23 @@ export default function HomePage() {
 
           {/* Button Produk Lainnya */}
           <div className="text-center">
-            <a 
-              href="/umkm" 
+            <a
+              href="/umkm"
               className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold px-8 py-3 rounded-full transition"
             >
               Lihat Produk Lainnya
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
               </svg>
             </a>
           </div>
@@ -334,7 +328,8 @@ export default function HomePage() {
             Lokasi Desa
           </h2>
           <p className="text-center text-gray-600 mb-12">
-            Temukan lokasi kami di peta untuk berkunjung dan berkenalan dengan Desa Pemerihan
+            Temukan lokasi kami di peta untuk berkunjung dan berkenalan dengan
+            Desa Pemerihan
           </p>
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
@@ -355,7 +350,9 @@ export default function HomePage() {
                 <MapPin className="w-5 h-5" />
                 <h3 className="text-xl font-bold">Desa Sejahtera</h3>
               </div>
-              <p className="text-green-100">Bengkunat Belimbing, Kabupaten Pesisir Barat</p>
+              <p className="text-green-100">
+                Bengkunat Belimbing, Kabupaten Pesisir Barat
+              </p>
               <div className="mt-4 text-sm text-green-100">
                 📍 Lampung 123-45678
               </div>
@@ -380,7 +377,8 @@ export default function HomePage() {
               </div>
               <h4 className="font-bold text-gray-800 mb-2">Telepon</h4>
               <p className="text-gray-600 text-sm">
-                Tlpn: +62123456789<br />
+                Tlpn: +62123456789
+                <br />
                 Fax: +62123456789
               </p>
             </div>
@@ -391,7 +389,8 @@ export default function HomePage() {
               </div>
               <h4 className="font-bold text-gray-800 mb-2">Email</h4>
               <p className="text-gray-600 text-sm">
-                Senin - Jumat : 08:00 - 16:00<br />
+                Senin - Jumat : 08:00 - 16:00
+                <br />
                 Sabtu : 08:00 - 12:00
               </p>
             </div>
@@ -406,31 +405,40 @@ export default function HomePage() {
             Kabar Desa
           </h2>
           <p className="text-center text-gray-600 mb-12">
-            Berita terkini dan kegiatan terbaru dari Desa Pemerihan untuk kepentingan bersama
+            Berita terkini dan kegiatan terbaru dari Desa Pemerihan untuk
+            kepentingan bersama
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {newsArticles.map((article, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+              >
                 <div className="relative">
                   <span className="absolute top-3 left-3 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full z-10">
                     {article.category}
                   </span>
-                  <img 
+                  <img
                     src={article.image}
                     alt={article.title}
                     className="w-full h-48 object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">{article.date}</div>
+                  <div className="text-sm text-gray-500 mb-2">
+                    {article.date}
+                  </div>
                   <h4 className="font-bold text-gray-800 mb-3 line-clamp-2">
                     {article.title}
                   </h4>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                     {article.excerpt}
                   </p>
-                  <a href="#" className="text-green-600 font-semibold text-sm hover:text-green-700 inline-flex items-center gap-1">
+                  <a
+                    href="#"
+                    className="text-green-600 font-semibold text-sm hover:text-green-700 inline-flex items-center gap-1"
+                  >
                     Baca Selengkapnya →
                   </a>
                 </div>
@@ -453,19 +461,19 @@ export default function HomePage() {
             Kunjungi Desa Sejahtera
           </h2>
           <p className="text-lg md:text-xl text-amber-100 mb-8">
-            Nikmati keindahan alam, budaya lokal, dan keramahan masyarakat Desa Pemerihan. 
-            Kami siap menyambut Anda dengan hangat!
+            Nikmati keindahan alam, budaya lokal, dan keramahan masyarakat Desa
+            Pemerihan. Kami siap menyambut Anda dengan hangat!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="bg-yellow-400 text-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-yellow-500 transition inline-flex items-center justify-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Hubungi Kami
             </a>
-            <a 
-              href="/tentang" 
+            <a
+              href="/tentang"
               className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-amber-900 transition"
             >
               Tentang Kami
@@ -473,11 +481,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <ContactModal 
-        isOpen={selectedContact !== null}
-        onClose={() => setSelectedContact(null)}
-      />
     </div>
   );
 }

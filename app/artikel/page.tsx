@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Calendar, User, Tag } from 'lucide-react';
-import { articles, popularArticles, archiveMonths } from '@/libs/data';
+import Link from "next/link";
+import { Calendar, User, Tag } from "lucide-react";
+import { articles, popularArticles, archiveMonths } from "@/libs/data";
 
 export default function ArtikelPage() {
   return (
@@ -11,22 +11,20 @@ export default function ArtikelPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
-            
             {/* Main Article Feed */}
             <div className="space-y-6">
               {articles.map((article) => (
-                <Link 
-                  href={`/artikel/${article.slug}`} 
+                <Link
+                  href={`/artikel/${article.slug}`}
                   key={article.id}
                   className="block group"
                 >
                   <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0">
-                      
                       {/* Thumbnail */}
                       <div className="relative h-64 md:h-auto overflow-hidden">
-                        <img 
-                          src={article.image} 
+                        <img
+                          src={article.image}
                           alt={article.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -48,7 +46,16 @@ export default function ArtikelPage() {
                           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
                             <div className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
-                              <span>{new Date(article.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                              <span>
+                                {new Date(article.date).toLocaleDateString(
+                                  "id-ID",
+                                  {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                  },
+                                )}
+                              </span>
                             </div>
                             <div className="flex items-center gap-1">
                               <User className="w-4 h-4" />
@@ -65,7 +72,7 @@ export default function ArtikelPage() {
                         <div className="flex flex-wrap items-center justify-between gap-4">
                           <div className="flex flex-wrap gap-2">
                             {article.tags.slice(0, 3).map((tag, index) => (
-                              <span 
+                              <span
                                 key={index}
                                 className="inline-flex items-center gap-1 text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded"
                               >
@@ -76,8 +83,18 @@ export default function ArtikelPage() {
                           </div>
                           <span className="inline-flex items-center text-[#2D5A27] font-medium group-hover:gap-2 transition-all">
                             Baca Selengkapnya
-                            <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            <svg
+                              className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
                             </svg>
                           </span>
                         </div>
@@ -90,7 +107,6 @@ export default function ArtikelPage() {
 
             {/* Sidebar */}
             <aside className="space-y-6">
-              
               {/* Popular Posts */}
               <div className="bg-white rounded-xl shadow-md p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 pb-3 border-b-2 border-[#2D5A27] font-[family-name:var(--font-montserrat)]">
@@ -98,15 +114,15 @@ export default function ArtikelPage() {
                 </h3>
                 <div className="space-y-4">
                   {popularArticles.map((article, index) => (
-                    <Link 
-                      href={`/artikel/${article.slug}`} 
+                    <Link
+                      href={`/artikel/${article.slug}`}
                       key={article.id}
                       className="block group"
                     >
                       <div className="flex gap-3">
                         <div className="flex-shrink-0">
-                          <img 
-                            src={article.image} 
+                          <img
+                            src={article.image}
                             alt={article.title}
                             className="w-20 h-20 object-cover rounded-lg group-hover:opacity-80 transition-opacity"
                           />
@@ -117,7 +133,16 @@ export default function ArtikelPage() {
                           </h4>
                           <div className="flex items-center gap-1 text-xs text-gray-500">
                             <Calendar className="w-3 h-3" />
-                            <span>{new Date(article.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                            <span>
+                              {new Date(article.date).toLocaleDateString(
+                                "id-ID",
+                                {
+                                  day: "numeric",
+                                  month: "short",
+                                  year: "numeric",
+                                },
+                              )}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -136,8 +161,8 @@ export default function ArtikelPage() {
                 </h3>
                 <div className="space-y-2">
                   {archiveMonths.map((archive, index) => (
-                    <Link 
-                      href="#" 
+                    <Link
+                      href="#"
                       key={index}
                       className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-green-50 transition-colors group"
                     >
@@ -158,9 +183,15 @@ export default function ArtikelPage() {
                   Kategori
                 </h3>
                 <div className="space-y-2">
-                  {['UMKM', 'Pembangunan', 'Kegiatan Desa', 'Pemberdayaan', 'Wisata'].map((category, index) => (
-                    <Link 
-                      href="#" 
+                  {[
+                    "UMKM",
+                    "Pembangunan",
+                    "Kegiatan Desa",
+                    "Pemberdayaan",
+                    "Wisata",
+                  ].map((category, index) => (
+                    <Link
+                      href="#"
                       key={index}
                       className="block py-2 px-3 rounded-lg hover:bg-white/20 transition-colors"
                     >
@@ -169,7 +200,6 @@ export default function ArtikelPage() {
                   ))}
                 </div>
               </div>
-
             </aside>
           </div>
         </div>

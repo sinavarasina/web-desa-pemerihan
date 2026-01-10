@@ -1,50 +1,49 @@
-'use client';
+"use client";
 
-import { Users, MapPin, Camera, Target, Eye } from 'lucide-react';
+import { Users, MapPin, Camera, Target, Eye } from "lucide-react";
 
 export default function TentangPage() {
   // Gallery Images Data
   const galleryImages = [
-    { 
-      src: 'https://images.unsplash.com/photo-1593857389276-7c794900c90f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
-      alt: 'Traditional Village House',
-      caption: 'Rumah Adat Desa'
+    {
+      src: "https://images.unsplash.com/photo-1593857389276-7c794900c90f?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Traditional Village House",
+      caption: "Rumah Adat Desa",
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?w=800&auto=format&fit=crop', 
-      alt: 'Honey Farm',
-      caption: 'Peternakan Madu'
+    {
+      src: "https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?w=800&auto=format&fit=crop",
+      alt: "Honey Farm",
+      caption: "Peternakan Madu",
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&auto=format&fit=crop', 
-      alt: 'Mosque',
-      caption: 'Masjid Desa'
+    {
+      src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&auto=format&fit=crop",
+      alt: "Mosque",
+      caption: "Masjid Desa",
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop', 
-      alt: 'Village Office',
-      caption: 'Kantor Desa'
+    {
+      src: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop",
+      alt: "Village Office",
+      caption: "Kantor Desa",
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=800&auto=format&fit=crop', 
-      alt: 'Health Center',
-      caption: 'Puskesmas'
+    {
+      src: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=800&auto=format&fit=crop",
+      alt: "Health Center",
+      caption: "Puskesmas",
     },
-    { 
-      src: 'https://images.unsplash.com/photo-1511497584788-876760111969?w=800&auto=format&fit=crop', 
-      alt: 'Forest View',
-      caption: 'Hutan Damar'
+    {
+      src: "https://images.unsplash.com/photo-1511497584788-876760111969?w=800&auto=format&fit=crop",
+      alt: "Forest View",
+      caption: "Hutan Damar",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* Hero Section with Background Image */}
-      <section 
+      <section
         className="relative h-[400px] md:h-[500px] bg-cover bg-center"
         style={{
-          backgroundImage: 'url(/images/Hero.webp)',
+          backgroundImage: "url(/images/Hero.webp)",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40"></div>
@@ -67,29 +66,32 @@ export default function TentangPage() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed font-['Inter']">
               <p>
-                Desa Pemerihan merupakan salah satu desa yang terletak di Kecamatan Bengkunat, 
-                Kabupaten Pesisir Barat. Dikenal dengan kekayaan alamnya yang melimpah, desa ini 
-                tumbuh berdampingan dengan hutan tropis yang asri dan menjadi rumah bagi berbagai 
+                Desa Pemerihan merupakan salah satu desa yang terletak di
+                Kecamatan Bengkunat, Kabupaten Pesisir Barat. Dikenal dengan
+                kekayaan alamnya yang melimpah, desa ini tumbuh berdampingan
+                dengan hutan tropis yang asri dan menjadi rumah bagi berbagai
                 flora dan fauna khas Lampung.
               </p>
               <p>
-                Nama "Pemerihan" sendiri berasal dari kata yang memiliki makna historis bagi 
-                masyarakat setempat. Desa ini berdiri sejak puluhan tahun yang lalu dengan komitmen 
-                kuat untuk menjaga kelestarian alam sambil terus berkembang. Tradisi masyarakat 
-                dalam mengelola hutan Damar dan peternakan madu Apikalis menjadi ciri khas yang 
-                membedakan desa ini dengan wilayah lainnya.
+                Nama "Pemerihan" sendiri berasal dari kata yang memiliki makna
+                historis bagi masyarakat setempat. Desa ini berdiri sejak
+                puluhan tahun yang lalu dengan komitmen kuat untuk menjaga
+                kelestarian alam sambil terus berkembang. Tradisi masyarakat
+                dalam mengelola hutan Damar dan peternakan madu Apikalis menjadi
+                ciri khas yang membedakan desa ini dengan wilayah lainnya.
               </p>
               <p>
-                Dengan kebersamaan dan gotong royong yang tinggi, Desa Pemerihan terus melangkah 
-                maju untuk mewujudkan desa yang mandiri, sejahtera, dan berkelanjutan berbasis 
-                potensi alam dan kearifan lokal yang telah diwariskan turun-temurun.
+                Dengan kebersamaan dan gotong royong yang tinggi, Desa Pemerihan
+                terus melangkah maju untuk mewujudkan desa yang mandiri,
+                sejahtera, dan berkelanjutan berbasis potensi alam dan kearifan
+                lokal yang telah diwariskan turun-temurun.
               </p>
             </div>
           </div>
           <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop" 
-              alt="Village Landscape" 
+            <img
+              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop"
+              alt="Village Landscape"
               className="rounded-xl shadow-lg w-full h-[400px] object-cover"
             />
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#2D5A27] rounded-xl opacity-20"></div>
@@ -107,14 +109,21 @@ export default function TentangPage() {
                 <div className="w-12 h-12 bg-[#2D5A27] rounded-lg flex items-center justify-center">
                   <Eye className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#2D5A27] font-['Montserrat']">Visi</h3>
+                <h3 className="text-2xl font-bold text-[#2D5A27] font-['Montserrat']">
+                  Visi
+                </h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-['Inter']">
-                Terwujudnya Desa Pemerihan sebagai desa yang <span className="font-bold text-[#2D5A27]">mandiri</span> dalam 
-                pengelolaan sumber daya, <span className="font-bold text-[#2D5A27]">sejahtera</span> dalam perekonomian masyarakat, 
-                dan <span className="font-bold text-[#2D5A27]">berkelanjutan</span> dalam menjaga kelestarian lingkungan 
-                dengan mengoptimalkan potensi alam yang melimpah serta melestarikan kearifan lokal 
-                yang telah diwariskan secara turun-temurun untuk kesejahteraan generasi mendatang.
+                Terwujudnya Desa Pemerihan sebagai desa yang{" "}
+                <span className="font-bold text-[#2D5A27]">mandiri</span> dalam
+                pengelolaan sumber daya,{" "}
+                <span className="font-bold text-[#2D5A27]">sejahtera</span>{" "}
+                dalam perekonomian masyarakat, dan{" "}
+                <span className="font-bold text-[#2D5A27]">berkelanjutan</span>{" "}
+                dalam menjaga kelestarian lingkungan dengan mengoptimalkan
+                potensi alam yang melimpah serta melestarikan kearifan lokal
+                yang telah diwariskan secara turun-temurun untuk kesejahteraan
+                generasi mendatang.
               </p>
             </div>
 
@@ -124,7 +133,9 @@ export default function TentangPage() {
                 <div className="w-12 h-12 bg-[#2D5A27] rounded-lg flex items-center justify-center">
                   <Target className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#2D5A27] font-['Montserrat']">Misi</h3>
+                <h3 className="text-2xl font-bold text-[#2D5A27] font-['Montserrat']">
+                  Misi
+                </h3>
               </div>
               <ul className="space-y-3 text-gray-700 font-['Inter']">
                 <li className="flex gap-3">
@@ -137,7 +148,9 @@ export default function TentangPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-[#2D5A27] font-bold">•</span>
-                  <span>Membangun kesadaran ekologi dan kelestarian lingkungan</span>
+                  <span>
+                    Membangun kesadaran ekologi dan kelestarian lingkungan
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-[#2D5A27] font-bold">•</span>
@@ -145,7 +158,9 @@ export default function TentangPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-[#2D5A27] font-bold">•</span>
-                  <span>Meningkatkan kualitas hidup dan kesejahteraan masyarakat</span>
+                  <span>
+                    Meningkatkan kualitas hidup dan kesejahteraan masyarakat
+                  </span>
                 </li>
               </ul>
             </div>
@@ -162,8 +177,12 @@ export default function TentangPage() {
               <div className="w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                 <Users className="w-10 h-10" />
               </div>
-              <div className="text-5xl font-bold mb-2 font-['Montserrat']">2,847</div>
-              <div className="text-green-100 text-lg font-['Inter']">Jumlah Penduduk</div>
+              <div className="text-5xl font-bold mb-2 font-['Montserrat']">
+                2,847
+              </div>
+              <div className="text-green-100 text-lg font-['Inter']">
+                Jumlah Penduduk
+              </div>
             </div>
 
             {/* Area */}
@@ -171,8 +190,12 @@ export default function TentangPage() {
               <div className="w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                 <MapPin className="w-10 h-10" />
               </div>
-              <div className="text-5xl font-bold mb-2 font-['Montserrat']">15.2</div>
-              <div className="text-green-100 text-lg font-['Inter']">Luas Wilayah (km²)</div>
+              <div className="text-5xl font-bold mb-2 font-['Montserrat']">
+                15.2
+              </div>
+              <div className="text-green-100 text-lg font-['Inter']">
+                Luas Wilayah (km²)
+              </div>
             </div>
 
             {/* Tourist Destinations */}
@@ -180,8 +203,12 @@ export default function TentangPage() {
               <div className="w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                 <Camera className="w-10 h-10" />
               </div>
-              <div className="text-5xl font-bold mb-2 font-['Montserrat']">8</div>
-              <div className="text-green-100 text-lg font-['Inter']">Destinasi Wisata</div>
+              <div className="text-5xl font-bold mb-2 font-['Montserrat']">
+                8
+              </div>
+              <div className="text-green-100 text-lg font-['Inter']">
+                Destinasi Wisata
+              </div>
             </div>
           </div>
         </div>
@@ -201,20 +228,22 @@ export default function TentangPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.map((image, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={image.src} 
+                  <img
+                    src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <p className="text-lg font-semibold font-['Inter']">{image.caption}</p>
+                    <p className="text-lg font-semibold font-['Inter']">
+                      {image.caption}
+                    </p>
                   </div>
                 </div>
               </div>
