@@ -12,8 +12,12 @@ const ShopItem = z.object({
   price: z.coerce.number(),
   contact: z.string(),
   description: z.string(),
-  imagesUrl: z.array(z.string().optional()).max(MAX_IMAGES),
+  imagesUrl: z.array(z.string()).max(MAX_IMAGES),
 });
+
+const isObjectKey = (value: string) => {
+  return !value.startsWith("http://") && !value.startsWith("https://");
+};
 
 export async function PUT(
   req: Request,
@@ -84,7 +88,7 @@ export async function PUT(
     const inChanges = result.data.imagesUrl?.[i];
     const oldUrl = oldItem.imagesUrl?.[i];
 
-    if (typeof inChanges === "string") {
+    if (typeof inChanges === "string" && isObjectKey(inChanges)) {
       imageArr.push(inChanges);
     } else if (typeof oldUrl === "string") {
       imageArr.push(oldUrl);
