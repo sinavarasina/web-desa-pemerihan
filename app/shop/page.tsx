@@ -87,56 +87,50 @@ export default function Page() {
       {!isLoading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {shopItems.map((item, i) => (
+
             <div
               key={item.slug}
               className="group bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col"
             >
-              {/* Bagian Image - Mengambil index 0 */}
-              <div className="relative aspect-square bg-gray-100 overflow-hidden">
-                {item.imagesUrl && item.imagesUrl.length > 0 ? (
-                  <img
-                    src={imgDownloadArr[i]!}
-                    alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                ) : (
-                  // Fallback jika tidak ada gambar
-                  <div className="flex items-center justify-center w-full h-full text-gray-400">
-                    <span className="text-sm">No Image</span>
-                  </div>
-                )}
-              </div>
 
-              {/* Bagian Konten */}
-              <div className="p-4 flex flex-col flex-grow">
-                {/* Tanggal */}
-                <span className="text-xs text-gray-500 mb-1">
-                  {timeFormatter(item.createdAt)}
-                </span>
+              {/* Action Button */}
+              <Link
+                href={`/shop/${item.slug}`} // Sesuaikan dengan routing detail page Anda
+              >
+                {/* Bagian Image - Mengambil index 0 */}
+                <div className="relative aspect-square bg-gray-100 overflow-hidden">
+                  {item.imagesUrl && item.imagesUrl.length > 0 ? (
+                    <img
+                      src={imgDownloadArr[i]!}
+                      alt={item.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    // Fallback jika tidak ada gambar
+                    <div className="flex items-center justify-center w-full h-full text-gray-400">
+                      <span className="text-sm">No Image</span>
+                    </div>
+                  )}
+                </div>
 
-                {/* Nama Produk (Truncate jika terlalu panjang) */}
-                <h3 className="font-semibold text-gray-800 text-lg mb-1 truncate" title={item.name}>
-                  {item.name}
-                </h3>
+                {/* Bagian Konten */}
+                <div className="p-4 flex flex-col flex-grow">
+                  {/* Nama Produk (Truncate jika terlalu panjang) */}
+                  <h3 className="font-semibold text-gray-800 text-lg mb-1 truncate" title={item.name}>
+                    {item.name}
+                  </h3>
 
-                {/* Harga */}
-                <p className="text-emerald-600 font-bold text-lg mb-2">
-                  {formatRupiah(item.price)}
-                </p>
+                  {/* Harga */}
+                  <p className="text-emerald-600 font-bold text-lg mb-2">
+                    {formatRupiah(item.price)}
+                  </p>
 
-                {/* Deskripsi Singkat */}
-                <p className="text-sm text-gray-600 line-clamp-2 mb-4 flex-grow">
-                  {item.description}
-                </p>
-
-                {/* Action Button */}
-                <Link
-                  href={`/shop/${item.slug}`} // Sesuaikan dengan routing detail page Anda
-                  className="w-full mt-auto py-2 px-4 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors text-center"
-                >
-                  Lihat Detail
-                </Link>
-              </div>
+                  {/* Deskripsi Singkat */}
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-4 flex-grow">
+                    {item.description}
+                  </p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
