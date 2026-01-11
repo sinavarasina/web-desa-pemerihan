@@ -2,7 +2,7 @@ import { getPresignedDownloadUrl } from "@/libs/awsS3Action";
 
 type ShopItemResult = (string | null)[];
 
-export async function getShopItemImage(
+export async function getShopItemImages(
   imgUrls: string[],
 ): Promise<ShopItemResult> {
   try {
