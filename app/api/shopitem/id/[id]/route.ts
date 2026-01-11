@@ -19,6 +19,9 @@ const isObjectKey = (value: string) => {
   return !value.startsWith("http://") && !value.startsWith("https://");
 };
 
+/////////
+// PUT //
+/////////
 export async function PUT(
   req: Request,
   { params }: { params: Promise<{ id: string }> },
@@ -125,6 +128,9 @@ export async function PUT(
   }
 }
 
+////////////
+// DELETE //
+////////////
 export async function DELETE(
   req: Request,
   { params }: { params: Promise<{ id: string }> },

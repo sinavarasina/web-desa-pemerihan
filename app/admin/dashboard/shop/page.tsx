@@ -50,6 +50,32 @@ export default function Page() {
     getShopData();
   }, []);
 
+  const handleDelete = async (id: number) => {
+    const token = localStorage.getItem("auth");
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/shopitem/id/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      // error handling
+      if (!res.ok) {
+        throw new Error("Request failed");
+      }
+
+      // running get shop data again to refresh data without refreshing all page
+      getShopData()
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <div className="flex flex-col md:flex-row min-h-dvh bg-white">
       <DashboardSidebar />
@@ -94,7 +120,10 @@ export default function Page() {
                 >
                   <MdOutlineModeEdit />
                 </Link>
-                <button className="px-3 py-1 text-xl text-[#e64553] hover:bg-red-50 rounded">
+                <button
+                  className="px-3 py-1 text-xl text-[#e64553] hover:bg-red-50 rounded"
+                  onClick={() => handleDelete(item.id)}
+                >
                   <CiTrash />
                 </button>
               </div>
