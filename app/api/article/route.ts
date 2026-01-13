@@ -3,7 +3,7 @@ import { Prisma } from "@/generated/prisma/client";
 import * as z from "zod";
 import { JwtPayload } from "jsonwebtoken";
 import { validateBody } from "@/libs/requestHelper";
-import { validateJwtAuthHelper } from "@/libs/authHelper";
+import { validateJwtAuthHelper } from "@/helper/authHelper";
 import { generateSlug } from "@/libs/generateSlugHelper";
 
 const Article = z.object({

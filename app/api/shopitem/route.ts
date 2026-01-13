@@ -1,5 +1,5 @@
 import { validateBody } from "@/libs/requestHelper";
-import { validateJwtAuthHelper } from "@/libs/authHelper";
+import { validateJwtAuthHelper } from "@/helper/authHelper";
 import * as z from "zod";
 import { JwtPayload } from "jsonwebtoken";
 import prisma from "@/libs/prisma";
