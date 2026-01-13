@@ -44,8 +44,9 @@ export default function Page() {
     const token = localStorage.getItem("auth");
 
     try {
+      // fetch and error handling
       const res = await fetch(
-        `http://localhost:3000/api/article/client?page=${page}&limit=2`,
+        `http://localhost:3000/api/article/client?page=${page}&limit=7`,
         {
           method: "GET",
           headers: {
@@ -54,9 +55,7 @@ export default function Page() {
           },
         },
       );
-
       const data = await res.json();
-
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Gagal mengambil data");
       }
@@ -65,10 +64,7 @@ export default function Page() {
         (item: any) => item.featuredImageUrl,
       );
       setImgArr(collectedImages);
-
-      console.log("data: ", data);
       setShopItems(data.data);
-
       if (data.meta) {
         setMeta({
           currentPage: page,
@@ -82,6 +78,7 @@ export default function Page() {
   };
 
   const paginationList = generatePagination(meta.currentPage, meta.totalPages);
+  console.log(paginationList)
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-green-50/30">
@@ -137,10 +134,9 @@ export default function Page() {
             ))}
           </div>
 
+          {/* Nomor Halaman dengan Logic Ellipsis dan tombol next */}
           <div className="flex justify-center mt-5 gap-1">
-            {/* Nomor Halaman dengan Logic Ellipsis */}
             <div className="flex gap-1">
-              {/* --- [DIUBAH] Mapping menggunakan paginationList --- */}
               {paginationList.map((pageNum, index) => {
                 // Render Ellipsis (Titik-titik)
                 if (pageNum === "...") {
@@ -160,24 +156,22 @@ export default function Page() {
                     key={pageNum}
                     href={createPageUrl(pageNum, searchParams, pathname)}
                     className={`w-10 h-10 flex items-center justify-center rounded-lg border text-sm font-medium transition-colors ${pageNum === page
-                        ? "bg-[#2D5A27] text-white border-[#2D5A27]"
-                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+                      ? "bg-[#2D5A27] text-white border-[#2D5A27]"
+                      : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
                       }`}
                   >
                     {pageNum}
                   </Link>
                 );
               })}
-              {/* ------------------------------------------------ */}
             </div>
 
-            {/* Tombol Next (Tidak Berubah) */}
             <Link
               href={createPageUrl(page + 1, searchParams, pathname)}
               prefetch={false}
               className={`p-2 rounded-lg border ${page >= meta.totalPages
-                  ? "pointer-events-none opacity-50 bg-gray-100 text-gray-400"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
+                ? "pointer-events-none opacity-50 bg-gray-100 text-gray-400"
+                : "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
                 }`}
               aria-disabled={page >= meta.totalPages}
             >
