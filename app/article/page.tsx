@@ -49,16 +49,13 @@ export default function Page() {
 
     try {
       // fetch and error handling
-      const res = await fetch(
-        `/api/article/client?page=${page}&limit=7`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+      const res = await fetch(`/api/article/client?page=${page}&limit=7`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       const data = await res.json();
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Gagal mengambil data");

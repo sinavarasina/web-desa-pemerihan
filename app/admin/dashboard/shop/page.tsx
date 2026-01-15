@@ -20,16 +20,13 @@ export default function Page() {
   const getShopData = async () => {
     const token = localStorage.getItem("auth");
     try {
-      const res = await fetch(
-        "/api/shopitem?page=1&limit=10",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+      const res = await fetch("/api/shopitem?page=1&limit=10", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
 
       const data = await res.json();
 
