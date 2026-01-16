@@ -85,7 +85,7 @@ export async function POST(req: Request) {
         slug: finalSlug,
         content: result.data.content,
         featuredImageUrl: result.data.featuredImageUrl,
-        shortDescription: result.data.shortDescription
+        shortDescription: result.data.shortDescription,
       },
     });
   } catch (err) {

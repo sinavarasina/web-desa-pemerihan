@@ -22,7 +22,7 @@ export async function PUT(
   const { id } = await params;
   let oldArticle;
   let newSlug;
-  
+
   // check the id is valid or not
   const articleId = parseInt(id);
   if (isNaN(articleId)) {

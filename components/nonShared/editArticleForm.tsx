@@ -27,7 +27,9 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
 
   const [value, setValue] = useState(initialData.content);
   const [title, setTitle] = useState(initialData.title);
-  const [shortDescription, setShortDescription] = useState(initialData.shortDescription);
+  const [shortDescription, setShortDescription] = useState(
+    initialData.shortDescription,
+  );
   const [file, setFile] = useState<File | null>(null);
 
   const currentImagePreview = file
