@@ -7,6 +7,8 @@ import {
   HeadBucketCommand,
   CreateBucketCommand,
   S3ServiceException,
+  ObjectIdentifier,
+  DeleteObjectsCommand,
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import * as z from "zod";
@@ -169,5 +171,27 @@ export async function getPresignedDownloadUrl(objectName: string) {
   } catch (error) {
     console.error("s3 Download Error:", error);
     return { success: false, error: "Gagal mengambil file" };
+  }
+}
+
+export async function deleteImgInBucket(objectKey: string[]) {
+  try {
+    if (!objectKey || objectKey.length === 0) {
+      throw new Error("Nama file tidak boleh kosong");
+    }
+
+    const objToDel: ObjectIdentifier[] = objectKey.map((key) => ({ Key: key }));
+
+    const command = new DeleteObjectsCommand({
+      Bucket: s3Conf.BUCKET_NAME,
+      Delete: {
+        Objects: objToDel,
+        Quiet: false,
+      },
+    });
+
+    await s3Client.send(command);
+  } catch (err) {
+    return err;
   }
 }
