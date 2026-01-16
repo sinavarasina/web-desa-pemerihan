@@ -9,6 +9,7 @@ import { deleteImgInBucket } from "@/libs/awsS3Action";
 const ArticleSchema = z.object({
   title: z.string().min(5),
   content: z.string().min(5),
+  shortDescription: z.string().min(5),
   featuredImageUrl: z.string().optional(),
 });
 
@@ -23,6 +24,7 @@ export async function PUT(
   let oldArticle;
   let newSlug;
 
+  // check the id is valid or not
   const articleId = parseInt(id);
   if (isNaN(articleId)) {
     return Response.json({ error: "ID Artikel tidak valid" }, { status: 400 });
@@ -85,6 +87,7 @@ export async function PUT(
         title: result.data.title,
         content: result.data.content,
         slug: newSlug,
+        shortDescription: result.data.shortDescription,
         featuredImageUrl:
           result.data.featuredImageUrl || oldArticle.featuredImageUrl,
       },
