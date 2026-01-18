@@ -41,7 +41,7 @@ function ArticleContent() {
   });
 
   useEffect(() => {
-    getShopData();
+    getArticleData();
   }, [page]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function ArticleContent() {
     getPresigned();
   }, [imgArr]);
 
-  const getShopData = async () => {
+  const getArticleData = async () => {
     setIsLoading(true);
     const token = localStorage.getItem("auth");
 
@@ -95,6 +95,20 @@ function ArticleContent() {
   }
 
   const paginationList = generatePagination(meta.currentPage, meta.totalPages);
+
+  // 👉 Skeleton saat fetch client-side
+  if (isLoading) {
+    return <ArticleListSkeleton />;
+  }
+
+  // 👉 Empty state
+  if (!isLoading && article.length === 0) {
+    return (
+      <div className="text-center py-10 text-gray-500">
+        Belum ada artikel tersedia.
+      </div>
+    );
+  }
 
   return (
     <section className="pb-16">
@@ -218,12 +232,21 @@ export default function Page() {
 
 function ArticleListSkeleton() {
   return (
-    <div className="max-w-7xl mt-5 mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid gap-4 animate-pulse">
-        {[...Array(12)].map((_, i) => (
-          <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
-        ))}
-      </div>
+    <div className="max-w-7xl mx-auto px-4 py-10 animate-pulse space-y-6">
+      {[...Array(8)].map((_, i) => (
+        <div
+          key={i}
+          className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-6 bg-white p-5"
+        >
+          <div className="h-64 bg-gray-200" />
+          <div className="space-y-4">
+            <div className="h-6 bg-gray-200 w-3/4" />
+            <div className="h-4 bg-gray-200 w-1/3" />
+            <div className="h-4 bg-gray-200 w-full" />
+            <div className="h-4 bg-gray-200 w-5/6" />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
