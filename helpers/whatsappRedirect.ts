@@ -7,7 +7,7 @@ export function whatsappRedirect(
   sellerName: string | null,
 ): string {
   const name = sellerName ? ` ${sellerName}` : "";
-  const message = `Halo ${name}, saya tertarik dengan ${productName}`;
+  const message = `Halo${name}, saya tertarik dengan ${productName}`;
   const encodedMessage = encodeURIComponent(message);
   const url = `${prefix}${dialNum}?text=${encodedMessage}`;
   return url;
