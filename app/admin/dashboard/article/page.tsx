@@ -23,10 +23,9 @@ interface Article {
   content: string;
 }
 
-export default function ArticleDashboard() {
+function ArticleDashboard() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  // const [articles, setArticles] = useState<any>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [meta, setMeta] = useState({
@@ -240,5 +239,13 @@ function ArticleListSkeleton() {
         </div>
       ))}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <ArticleDashboard />
+    </Suspense>
   );
 }

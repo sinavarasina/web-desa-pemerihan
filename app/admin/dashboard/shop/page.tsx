@@ -24,7 +24,7 @@ interface ShopItem {
   imagesUrl: [];
 }
 
-export default function ShopDashboard() {
+function ShopDashboard() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const [shopItem, setShopItem] = useState<ShopItem[]>([]);
@@ -249,5 +249,13 @@ function ShopItemListSkeleton() {
         </div>
       ))}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <ShopDashboard />
+    </Suspense>
   );
 }
