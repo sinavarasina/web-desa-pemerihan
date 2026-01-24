@@ -8,7 +8,6 @@ import {
 import { usePathname, useSearchParams } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { getShopItemImages } from "@/helpers/presignedDownloadHelper";
-import formatRupiah from "@/helpers/rupiahFormat";
 
 interface ShopItem {
   createdAt: string;
@@ -120,7 +119,7 @@ function ShopContent() {
             key={item.slug}
             className="group bg-white transition-all duration-300 overflow-hidden flex md:mx-20 lg:mx-40 mb-20 flex-col"
           >
-            <Link href={`/shop/${item.slug}`} prefetch={false}>
+            <Link href={`/location/${item.slug}`} prefetch={false}>
               {/* Bagian Image */}
               <div className="relative rounded-xl bg-gray-100 overflow-hidden h-96">
                 {imgDownloadArr[i] ? (
@@ -137,17 +136,11 @@ function ShopContent() {
 
               {/* Bagian Konten */}
               <div className="pb-4 pt-1 flex flex-col flex-grow">
-                <p
-                  className="text-3xl font-semibold"
-                >
-                  {item.name}
-                </p>
+                <p className="text-3xl font-semibold">{item.name}</p>
                 <p className="font-medium text-gray-700">
-                  Buka jam 07:00 - 16:00
+                  Buka jam 07:00 - 16:00 WIB
                 </p>
-                <p className="font-medium text-gray-700">
-                  Setiap hari
-                </p>
+                <p className="font-medium text-gray-700">Setiap hari</p>
                 <p className="text-sm text-gray-600 line-clamp-2 flex-grow mt-1">
                   {item.owner}
                 </p>
@@ -208,7 +201,9 @@ export default function Page() {
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8">
       {/* Judul Render Langsung (Static) */}
-      <h1 className="text-2xl font-bold mb-6 text-gray-800 md:mx-20 lg:mx-40">Pariwisata</h1>
+      <h1 className="text-2xl font-bold mb-6 text-gray-800 md:mx-20 lg:mx-40">
+        Pariwisata
+      </h1>
 
       {/* Konten Dinamis (Wrapped in Suspense) */}
       <Suspense fallback={<ShopListSkeleton />}>
