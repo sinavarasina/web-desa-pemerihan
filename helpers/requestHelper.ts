@@ -5,6 +5,7 @@ type ValidationError = {
   code: string;
   status: number;
   details?: unknown;
+  body?: unknown;
 };
 
 type ValidationResult<T> =
@@ -26,6 +27,7 @@ export async function validateBody<T>(
         message: "Body Json hilang atau tidak valid",
         code: "INVALID_JSON",
         status: 400,
+        body: body,
       },
     };
   }
@@ -45,6 +47,7 @@ export async function validateBody<T>(
         code: "VALIDATION_ERROR",
         status: 422,
         details: z.treeifyError(result.error),
+        body: body,
       },
     };
   }
