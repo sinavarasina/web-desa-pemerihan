@@ -39,6 +39,13 @@ export async function PUT(
 
   const result = await validateBody(req, TourSpot);
   if (!result.success) {
+    const { imagesUrl } = result.error.body as Partial<
+      z.infer<typeof TourSpot>
+    >;
+    if (Array.isArray(imagesUrl)) {
+      await deleteImgInBucket(imagesUrl);
+    }
+
     return Response.json(
       { error: result.error },
       { status: result.error.status },

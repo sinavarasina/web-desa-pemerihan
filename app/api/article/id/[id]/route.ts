@@ -32,6 +32,14 @@ export async function PUT(
 
   const result = await validateBody(req, ArticleSchema);
   if (!result.success) {
+    const { featuredImageUrl } = result.error.body as Partial<
+      z.infer<typeof ArticleSchema>
+    >;
+
+    if (typeof featuredImageUrl === "string") {
+      await deleteImgInBucket([featuredImageUrl]);
+    }
+
     return Response.json(
       { error: result.error },
       { status: result.error.status },
