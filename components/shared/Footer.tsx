@@ -54,7 +54,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/umkm"
+                  href="/shop"
                   className="hover:text-white hover:translate-x-1 transition-all inline-block"
                 >
                   Produk UMKM
@@ -62,10 +62,18 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/berita"
+                  href="/article"
                   className="hover:text-white hover:translate-x-1 transition-all inline-block"
                 >
-                  Informasi Publik
+                  Article
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/location"
+                  className="hover:text-white hover:translate-x-1 transition-all inline-block"
+                >
+                  Lokasi
                 </Link>
               </li>
             </ul>
@@ -73,9 +81,14 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-amber-900/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-amber-50/60 text-xs text-center md:text-left">
-            © 2025 Pemerintah Desa Pemerihan. All rights reserved.
-          </p>
+          <div>
+            <p className="text-amber-50/60 text-xs text-center md:text-left">
+              © 2025 Pemerintah Desa Pemerihan. All rights reserved.
+            </p>
+            <p className="text-amber-50/60 text-xs text-center md:text-left">
+              Pekon Pemerintah | KKN Tematik 16 ITERA Genap 2025/2026.
+            </p>
+          </div>
 
           <div>
             <Link

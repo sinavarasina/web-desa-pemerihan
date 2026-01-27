@@ -169,9 +169,6 @@ function TourSpotContent() {
                     ))}
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 line-clamp-2 flex-grow mt-1">
-                  {item.owner}
-                </p>
               </div>
             </Link>
           </div>

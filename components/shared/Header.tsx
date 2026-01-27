@@ -58,7 +58,6 @@ export default function Header() {
             <NavLink href="/shop">Produk UMKM</NavLink>
             <NavLink href="/article">Artikel</NavLink>
             <NavLink href="/location">Lokasi</NavLink>
-            <NavLink href="/lokasi">Lokasi (Deprecated)</NavLink>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -110,7 +109,6 @@ export default function Header() {
             <MobileNavLink href="/shop">Produk UMKM</MobileNavLink>
             <MobileNavLink href="/article">Artikel</MobileNavLink>
             <MobileNavLink href="/location">Lokasi</MobileNavLink>
-            <MobileNavLink href="/lokasi">Lokasi (Deprecated)</MobileNavLink>
           </nav>
         </div>
       )}
