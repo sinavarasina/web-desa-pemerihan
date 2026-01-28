@@ -14,6 +14,7 @@ export default function Page() {
   const [contact, setContact] = useState("");
   const [owner, setOwner] = useState("");
   const [description, setDescription] = useState("");
+  const [mapsLink, setMapsLink] = useState("");
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [openHour, setOpenHour] = useState("08");
   const [openMinute, setOpenMinute] = useState("00");
@@ -62,6 +63,7 @@ export default function Page() {
           owner: owner,
           description: description,
           imagesUrl: objectName,
+          mapsLink: mapsLink,
           openDay: finalOpenDays,
           openTimeFrom: openDate.toISOString(),
           openTimeTo: closeDate.toISOString(),
@@ -175,6 +177,16 @@ export default function Page() {
             placeholder="081234567890"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col mb-5">
+          <p>Link Maps (Masukan link GoogleMaps Pariwisata ini):</p>
+          <input
+            className="border px-2 py-1 border-gray-300 w-1/3"
+            placeholder="https://xxxxxxxxxx"
+            value={mapsLink}
+            onChange={(e) => setMapsLink(e.target.value)}
           />
         </div>
 
