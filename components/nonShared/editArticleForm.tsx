@@ -1,11 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import "react-quill-new/dist/quill.snow.css";
 import { getPresignedUploadUrl } from "@/libs/awsS3Action";
 import { IoSave } from "react-icons/io5";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), {
   ssr: false,
@@ -31,6 +31,7 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
     initialData.shortDescription,
   );
   const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const currentImagePreview = file
     ? URL.createObjectURL(file)
@@ -65,15 +66,19 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
     } catch (err) {
       alert("Gagal memperbarui data");
       console.error(err);
+      throw err;
     }
   };
 
   const handleProcess = async () => {
+    setIsLoading(true);
+
     try {
       let uploadedObjectName = null;
+
       if (!file) {
         await handleUpdateArticle(null);
-        return;
+        return; // Return disini agar tidak lanjut ke upload, finally akan tetap jalan
       }
 
       const result = await getPresignedUploadUrl(
@@ -106,6 +111,8 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
     } catch (err) {
       console.error(err);
       alert("Terjadi kesalahan sistem");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -116,18 +123,20 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
       <div className="flex flex-col mb-5">
         <p className="min-w-[100px]">Judul:</p>
         <input
-          className="border px-2 py-1 border-gray-300 w-1/2"
+          className="border px-2 py-1 border-gray-300 w-1/2 disabled:bg-gray-100 disabled:text-gray-500"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          disabled={isLoading}
         />
       </div>
 
       <div className="flex flex-col mb-5">
         <p className="min-w-[100px]">Deskripsi Singkat:</p>
         <input
-          className="border px-2 py-1 border-gray-300 w-full"
+          className="border px-2 py-1 border-gray-300 w-full disabled:bg-gray-100 disabled:text-gray-500"
           value={shortDescription}
           onChange={(e) => setShortDescription(e.target.value)}
+          disabled={isLoading}
         />
       </div>
 
@@ -140,7 +149,8 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
             onChange={(e) => {
               setFile(e.target.files?.[0] || null);
             }}
-            className="flex-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            disabled={isLoading}
+            className="flex-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
 
@@ -151,7 +161,7 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
               <img
                 src={currentImagePreview}
                 alt="Preview"
-                className="h-40 object-cover rounded border border-gray-200"
+                className={`h-40 object-cover rounded border border-gray-200 transition-opacity ${isLoading ? "opacity-50" : ""}`}
               />
             </div>
           ) : (
@@ -161,19 +171,32 @@ export default function EditArticleForm({ initialData }: ArticleFormProps) {
       </div>
 
       <p className="mb-2">Isi artikel:</p>
-      <div className="bg-white">
+      <div
+        className={`bg-white transition-opacity ${isLoading ? "pointer-events-none opacity-60" : ""}`}
+      >
         <ReactQuill theme="snow" value={value} onChange={setValue} />
       </div>
 
       <div className="my-5 flex justify-end">
         <div
-          className="rounded-2xl text-sm px-4 py-2 bg-blue-600 text-white font-bold cursor-pointer hover:bg-blue-700 transition-colors shadow-md"
-          onClick={handleProcess}
+          className={`rounded-2xl text-sm px-4 py-2 font-bold transition-all shadow-md flex items-center gap-2 ${
+            isLoading
+              ? "bg-gray-400 text-white cursor-not-allowed shadow-none"
+              : "bg-blue-600 text-white cursor-pointer hover:bg-blue-700"
+          }`}
+          onClick={isLoading ? undefined : handleProcess}
         >
-          <div className="flex items-center gap-2">
-            <p>Simpan Perubahan</p>
-            <IoSave />
-          </div>
+          {isLoading ? (
+            <>
+              <p>Menyimpan...</p>
+              <AiOutlineLoading3Quarters className="animate-spin" />
+            </>
+          ) : (
+            <>
+              <p>Simpan Perubahan</p>
+              <IoSave />
+            </>
+          )}
         </div>
       </div>
     </div>

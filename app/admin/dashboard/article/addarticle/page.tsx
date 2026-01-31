@@ -5,6 +5,7 @@ import "react-quill-new/dist/quill.snow.css";
 import { getPresignedUploadUrl } from "@/libs/awsS3Action";
 import { IoSend } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 // kode ini gunanya biar react quill gk dirender secara ssr di development biar gk error
 const ReactQuill = dynamic(() => import("react-quill-new"), {
@@ -18,11 +19,12 @@ export default function Page() {
   const [title, setTitle] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddArticle = async (objectName: string) => {
     try {
       const token = localStorage.getItem("auth");
-
+      // kalo post ini gagal atau batal disimpen ntar di backend udah otomatis ngehapus gambar yang kekirim lewat featuredImageUrl
       const res = await fetch("/api/article", {
         method: "POST",
         headers: {
@@ -46,11 +48,17 @@ export default function Page() {
     } catch (err) {
       alert("Gagal terkirim");
       console.error(err);
+      throw err;
     }
   };
 
   const handleUpload = async () => {
-    if (!file) return;
+    if (!file) {
+      alert("Mohon pilih gambar terlebih dahulu");
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
       const result = await getPresignedUploadUrl(
@@ -78,9 +86,12 @@ export default function Page() {
         throw new Error("Gagal upload ke Minio");
       }
 
-      handleAddArticle(objectName);
+      // run fungsi handleAddArticle setelah selesai kirim gambar ke s3
+      await handleAddArticle(objectName);
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -93,6 +104,7 @@ export default function Page() {
             className="border px-2 py-1 border-gray-300 w-1/2"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -102,6 +114,7 @@ export default function Page() {
             className="border px-2 py-1 border-gray-300 w-full"
             value={shortDescription}
             onChange={(e) => setShortDescription(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -113,21 +126,37 @@ export default function Page() {
             onChange={(e) => {
               setFile(e.target.files?.[0] || null);
             }}
-            className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            disabled={isLoading}
+            className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50"
           />
         </div>
 
         <p>Isi artikel:</p>
-        <ReactQuill theme="snow" value={value} onChange={setValue} />
+        <div className={isLoading ? "pointer-events-none opacity-60" : ""}>
+          <ReactQuill theme="snow" value={value} onChange={setValue} />
+        </div>
 
         <div className="my-5 flex justify-end">
           <div
-            className="rounded-2xl text-sm px-4 py-2 bg-blue-50 text-blue-700 font-bold cursor-pointer hover:bg-blue-100"
-            onClick={handleUpload}
+            className={`rounded-2xl text-sm px-4 py-2 font-bold transition-all ${
+              isLoading
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                : "bg-blue-50 text-blue-700 cursor-pointer hover:bg-blue-100"
+            }`}
+            onClick={isLoading ? undefined : handleUpload}
           >
             <div className="flex items-center gap-2">
-              <p>Kirim Artikel</p>
-              <IoSend />
+              {isLoading ? (
+                <>
+                  <p>Sedang Mengirim...</p>
+                  <AiOutlineLoading3Quarters className="animate-spin" />
+                </>
+              ) : (
+                <>
+                  <p>Kirim Artikel</p>
+                  <IoSend />
+                </>
+              )}
             </div>
           </div>
         </div>

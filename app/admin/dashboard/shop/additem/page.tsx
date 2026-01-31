@@ -4,6 +4,8 @@ import { IoSend } from "react-icons/io5";
 import { getPresignedUploadUrl } from "@/libs/awsS3Action";
 import { useRouter } from "next/navigation";
 import { LuImagePlus } from "react-icons/lu";
+// [TAMBAH] Import icon loading
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Page() {
   const router = useRouter();
@@ -13,13 +15,14 @@ export default function Page() {
   const [owner, setOwner] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState<(File | null)[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const fileInputRef = useRef<(HTMLInputElement | null)[]>([]);
   const howMuchImages = [0, 1, 2, 3, 4];
 
   const handleAddArticle = async (objectName: string[]) => {
     try {
       const token = localStorage.getItem("auth");
-      console.log(objectName);
 
       const res = await fetch("/api/shopitem", {
         method: "POST",
@@ -46,12 +49,11 @@ export default function Page() {
     } catch (err) {
       alert("Gagal terkirim");
       console.error(err);
+      throw err;
     }
   };
 
   const handleUpload = async () => {
-    // A. Filter: Hanya ambil yang bukan null (membuang empty slots)
-    // BENAR (Mengecek keberadaan file secara pasti)
     const validFiles = file.filter((f): f is File => !!f);
 
     if (validFiles.length === 0) {
@@ -59,11 +61,10 @@ export default function Page() {
       return;
     }
 
-    try {
-      // B. Map: Ubah setiap file menjadi sebuah Promise upload
-      const uploadPromises = validFiles.map(async (currentFile) => {
-        // 1. Get Presigned URL
+    setIsLoading(true);
 
+    try {
+      const uploadPromises = validFiles.map(async (currentFile) => {
         const result = await getPresignedUploadUrl(
           currentFile.name,
           currentFile.type,
@@ -76,7 +77,6 @@ export default function Page() {
 
         const { url, objectName } = result.data;
 
-        // 2. Upload ke MinIO (PUT)
         const uploadRes = await fetch(url, {
           method: "PUT",
           body: currentFile,
@@ -89,30 +89,27 @@ export default function Page() {
           throw new Error(`Gagal upload file ${currentFile.name} ke storage`);
         }
 
-        // 3. Return objectName jika sukses
         return objectName;
       });
-
-      // C. Promise.all: Tunggu semua proses upload selesai
-      // Hasilnya adalah array berisi objectName yang sukses: ["img1.jpg", "img2.png", ...]
 
       const uploadedObjectNames = (await Promise.all(uploadPromises)).filter(
         (name): name is string => typeof name === "string",
       );
+
       if (uploadedObjectNames.length === 0) {
         throw new Error("Tidak ada gambar yang berhasil diupload");
       }
 
-      // D. Panggil fungsi simpan ke DB dengan array hasil upload
-      handleAddArticle(uploadedObjectNames);
+      await handleAddArticle(uploadedObjectNames);
     } catch (err) {
       console.error("Upload Error:", err);
-      alert("Terjadi kesalahan saat mengupload gambar.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // custom trigger biar minjem fungsi dari <input/> di button custom
   const handleCustomClick = (index: number) => {
+    if (isLoading) return;
     fileInputRef.current[index]?.click();
   };
 
@@ -123,10 +120,11 @@ export default function Page() {
         <div className="flex flex-col mb-5">
           <p>Nama Barang:</p>
           <input
-            className="border px-2 py-1 border-gray-300 w-1/2"
+            className="border px-2 py-1 border-gray-300 w-1/2 disabled:bg-gray-100 disabled:text-gray-500"
             value={name}
             placeholder="Melloi"
             onChange={(e) => setName(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -134,10 +132,11 @@ export default function Page() {
         <div className="flex flex-col mb-5">
           <p>Harga:</p>
           <input
-            className="border px-2 py-1 border-gray-300 w-1/3"
+            className="border px-2 py-1 border-gray-300 w-1/3 disabled:bg-gray-100 disabled:text-gray-500"
             type="number"
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
+            disabled={isLoading}
           />
         </div>
 
@@ -145,10 +144,11 @@ export default function Page() {
         <div className="flex flex-col mb-5">
           <p>Nama Pemilik/Toko:</p>
           <input
-            className="border px-2 py-1 border-gray-300 w-1/3"
+            className="border px-2 py-1 border-gray-300 w-1/3 disabled:bg-gray-100 disabled:text-gray-500"
             placeholder="Dani"
             value={owner}
             onChange={(e) => setOwner(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -156,10 +156,11 @@ export default function Page() {
         <div className="flex flex-col mb-5">
           <p>Nomor Whatsapp:</p>
           <input
-            className="border px-2 py-1 border-gray-300 w-1/3"
+            className="border px-2 py-1 border-gray-300 w-1/3 disabled:bg-gray-100 disabled:text-gray-500"
             placeholder="081234567890"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
@@ -178,15 +179,15 @@ export default function Page() {
                   onChange={(e) => {
                     const selectedFile = e.target.files?.[0];
                     if (selectedFile) {
-                      // 4. LOGIC MENGUBAH ARRAY PADA INDEX TERTENTU
                       setFile((prev) => {
-                        const newFiles = [...prev]; // Copy array lama
-                        newFiles[i] = selectedFile; // Ubah index ke-i
-                        return newFiles; // Simpan array baru
+                        const newFiles = [...prev];
+                        newFiles[i] = selectedFile;
+                        return newFiles;
                       });
                     }
                   }}
                   className="hidden"
+                  disabled={isLoading}
                 />
               </div>
 
@@ -194,9 +195,9 @@ export default function Page() {
               {!file[i] ? (
                 <div className="flex">
                   <div
-                    className="flex items-center justify-center text-sm text-slate-400
-              bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 cursor-pointer
-              mb-5 flex-col hover:bg-slate-100 transition"
+                    className={`flex items-center justify-center text-sm text-slate-400
+                      bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 
+                      mb-5 flex-col transition ${isLoading ? "cursor-not-allowed opacity-60" : "cursor-pointer hover:bg-slate-100"}`}
                     onClick={() => handleCustomClick(i)}
                   >
                     <LuImagePlus className="text-2xl mb-2" />
@@ -207,9 +208,9 @@ export default function Page() {
                 <img
                   src={URL.createObjectURL(file[i]!)}
                   onClick={() => handleCustomClick(i)}
-                  className="flex items-center justify-center text-sm text-slate-400
-            bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 cursor-pointer
-            mb-5 flex-col hover:bg-slate-100 transition"
+                  className={`flex items-center justify-center text-sm text-slate-400
+                    bg-slate-50 w-30 h-30 rounded-2xl border border-slate-200 
+                    mb-5 flex-col transition object-cover ${isLoading ? "cursor-not-allowed opacity-60" : "cursor-pointer hover:bg-slate-100"}`}
                 />
               )}
             </div>
@@ -220,23 +221,34 @@ export default function Page() {
         <div className="flex gap-5 mb-5 flex-col md:flex-row">
           <p>Masukan deskripsi barang:</p>
           <textarea
-            className="border px-2 py-1 border-gray-300 w-full md:w-1/2"
+            className="border px-2 py-1 border-gray-300 w-full md:w-1/2 disabled:bg-gray-100 disabled:text-gray-500"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            disabled={isLoading}
           />
         </div>
 
         {/* Tombol kirim */}
         <div className="my-5 flex justify-end">
           <div
-            className="rounded-2xl text-sm px-4 py-2 bg-blue-50 text-blue-700
-            font-bold cursor-pointer hover:bg-blue-100 transition"
-            onClick={handleUpload}
+            className={`rounded-2xl text-sm px-4 py-2 font-bold transition flex items-center gap-2 ${
+              isLoading
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                : "bg-blue-50 text-blue-700 cursor-pointer hover:bg-blue-100"
+            }`}
+            onClick={isLoading ? undefined : handleUpload}
           >
-            <div className="flex items-center gap-2">
-              <p>Upload Barang</p>
-              <IoSend />
-            </div>
+            {isLoading ? (
+              <>
+                <p>Sedang Mengupload...</p>
+                <AiOutlineLoading3Quarters className="animate-spin" />
+              </>
+            ) : (
+              <>
+                <p>Upload Barang</p>
+                <IoSend />
+              </>
+            )}
           </div>
         </div>
       </div>
