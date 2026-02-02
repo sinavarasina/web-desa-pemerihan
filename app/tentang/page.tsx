@@ -66,14 +66,14 @@ export default function TentangPage() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed font-['Inter']">
               <p>
-                Desa atau yang kerap disebut Pekon Pemerihan bermula dari wilayah Cawang Ara yang
-                mulai dibuka pada tahun 1960 oleh tujuh orang perintis, yaitu
-                Ahmad Sofian, Tanrejo, Joremi, Faderi, Kamdani, Istanto, dan
-                Yamin. Seiring bertambahnya pendatang pada tahun 1970, kawasan
-                ini berkembang menjadi wilayah permukiman dan perkebunan. Pada
-                tahun 1975, berdasarkan sosialisasi Petugas Pelestarian Alam
-                (PPA), Cawang Ara ditetapkan sebagai bagian dari Kawasan Suaka
-                Margasatwa Bukit Barisan Selatan (SMBBS).
+                Desa atau yang kerap disebut Pekon Pemerihan bermula dari
+                wilayah Cawang Ara yang mulai dibuka pada tahun 1960 oleh tujuh
+                orang perintis, yaitu Ahmad Sofian, Tanrejo, Joremi, Faderi,
+                Kamdani, Istanto, dan Yamin. Seiring bertambahnya pendatang pada
+                tahun 1970, kawasan ini berkembang menjadi wilayah permukiman
+                dan perkebunan. Pada tahun 1975, berdasarkan sosialisasi Petugas
+                Pelestarian Alam (PPA), Cawang Ara ditetapkan sebagai bagian
+                dari Kawasan Suaka Margasatwa Bukit Barisan Selatan (SMBBS).
               </p>
               <p>
                 Pada periode 1984 hingga 2010, Cawang Ara berstatus sebagai
