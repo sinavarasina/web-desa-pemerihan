@@ -62,8 +62,8 @@ export default function EditShopItemForm({ initialData }: ShopItemFormProps) {
     }
 
     // validasi
-    if (name.length < 1) {
-      alert(`Nama minimal 1 huruf!`);
+    if (name.length < 2) {
+      alert(`Nama minimal 2 huruf!`);
       return;
     }
     if (!contact.startsWith("08") && !contact.startsWith("62")) {
@@ -75,6 +75,10 @@ export default function EditShopItemForm({ initialData }: ShopItemFormProps) {
     }
     if (contact.length > 13) {
       alert(`Nomor whatsapp maksimal 12 angka!`);
+      return;
+    }
+    if (price < 100) {
+      alert("Harga minimal 100 Rupiah");
       return;
     }
     setIsLoading(true);

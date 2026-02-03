@@ -74,8 +74,8 @@ export default function Page() {
       return;
     }
 
-    if (name.length < 1) {
-      alert(`Nama minimal 1 huruf!`);
+    if (name.length < 2) {
+      alert(`Nama minimal 2 huruf!`);
       return;
     }
     if (!contact.startsWith("08") && !contact.startsWith("62")) {
@@ -88,6 +88,9 @@ export default function Page() {
     if (contact.length > 13) {
       alert(`Nomor whatsapp maksimal 12 angka!`);
       return;
+    }
+    if (price < 100) {
+      alert("Harga minimum 100 rupiah");
     }
 
     setIsLoading(true);

@@ -10,8 +10,8 @@ import { mergeImages } from "@/helpers/imgReplaceCompare";
 const MAX_IMAGES = 5;
 
 const ShopItem = z.object({
-  name: z.string(),
-  price: z.coerce.number(),
+  name: z.string().min(2),
+  price: z.coerce.number().min(3),
   contact: z.string(),
   owner: z.string(),
   description: z.string(),
