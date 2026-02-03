@@ -12,7 +12,7 @@ const MAX_IMAGES = 5;
 const ShopItem = z.object({
   name: z.string().min(2),
   price: z.coerce.number().min(3),
-  contact: z.string(),
+  contact: z.string().min(10).max(13),
   owner: z.string(),
   description: z.string(),
   imagesUrl: z.array(z.string()).max(MAX_IMAGES),
