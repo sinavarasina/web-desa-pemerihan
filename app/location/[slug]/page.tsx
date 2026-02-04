@@ -133,15 +133,7 @@ export default async function Page({ params }: Props) {
                       </svg>
                       <span className="text-gray-700 font-bold text-lg">
                         <span>
-                          {new Date(
-                            tourSpotData.openTimeFrom,
-                          ).toLocaleTimeString("id-ID", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            hour12: false,
-                          })}{" "}
-                          -{" "}
-                          {new Date(tourSpotData.openTimeTo).toLocaleTimeString(
+                          {tourSpotData.openTimeFrom.toLocaleTimeString(
                             "id-ID",
                             {
                               hour: "2-digit",
@@ -149,6 +141,12 @@ export default async function Page({ params }: Props) {
                               hour12: false,
                             },
                           )}{" "}
+                          -{" "}
+                          {tourSpotData.openTimeTo.toLocaleTimeString("id-ID", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}{" "}
                         </span>
                         <span className="text-sm text-gray-500 ml-1">WIB</span>
                       </span>
