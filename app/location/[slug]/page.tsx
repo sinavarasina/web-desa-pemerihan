@@ -47,6 +47,9 @@ export default async function Page({ params }: Props) {
     minimumFractionDigits: 0,
   }).format(Number(tourSpotData.entryFee));
 
+  const addHours = (date: Date, hours: number) =>
+    new Date(date.getTime() + hours * 60 * 60 * 1000);
+
   return (
     <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
       <article className="mx-auto md:max-w-6xl bg-white rounded-xl overflow-hidden border border-gray-100">
@@ -133,20 +136,23 @@ export default async function Page({ params }: Props) {
                       </svg>
                       <span className="text-gray-700 font-bold text-lg">
                         <span>
-                          {tourSpotData.openTimeFrom.toLocaleTimeString(
-                            "id-ID",
-                            {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                              hour12: false,
-                            },
-                          )}{" "}
-                          -{" "}
-                          {tourSpotData.openTimeTo.toLocaleTimeString("id-ID", {
+                          {addHours(
+                            tourSpotData.openTimeFrom,
+                            7,
+                          ).toLocaleTimeString("id-ID", {
                             hour: "2-digit",
                             minute: "2-digit",
                             hour12: false,
-                          })}{" "}
+                          })}
+                          {" - "}
+                          {addHours(
+                            tourSpotData.openTimeTo,
+                            7,
+                          ).toLocaleTimeString("id-ID", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}
                         </span>
                         <span className="text-sm text-gray-500 ml-1">WIB</span>
                       </span>
