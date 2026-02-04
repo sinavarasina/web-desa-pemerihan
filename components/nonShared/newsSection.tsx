@@ -132,7 +132,7 @@ export default function NewsSection() {
           )}
 
           <div className="text-center mt-12">
-            <Link href="/shop">
+            <Link href="/article">
               <button className="cursor-pointer bg-amber-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-amber-700 transition">
                 Lihat Semua Artikel →
               </button>
